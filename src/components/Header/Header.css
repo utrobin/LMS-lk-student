@@ -1,0 +1,34 @@
+.wrapper {
+    width: 100%;
+    background-color: var(--black);
+}
+.header {
+    width: 1076px;
+    padding: 0 15px;
+    height: 64px;
+    margin: auto;
+}
+.logo {
+    display: block;
+    float: left;
+    margin-top: 6px;
+}
+.menu {
+    color: var(--white);
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.avatar {
+    float: right;
+}
+.icons {
+    display: inline-flex;
+}
+.button:hover {
+    background-color: var(--greyHover)!important;
+}
+.dropdownMenu button{
+    position: absolute!important;
+}

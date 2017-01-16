@@ -1,4 +1,38 @@
 {
-  "name": "application-name",
-  "version": "0.0.1"
+  "name": "LMS-lk-student",
+  "version": "0.0.1",
+  "description": "new personal Cabinet of student",
+  "main": "index.js",
+  "scripts": {
+    "server": "node server.js",
+    "test": "node ./public/built/test.js",
+    "eslint": "./node_modules/.bin/eslint public/form/*.js",
+    "webpack": "./node_modules/.bin/webpack --config webpack.config.js --watch",
+    "webpack-prod": "./node_modules/.bin/webpack --config webpack.config.js --optimize-minimize"
+  },
+  "engines": {
+    "node": "7.3.0"
+  },
+  "keywords": [],
+  "author": "Utrobin",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer-core": "^5.2.1",
+    "babel-core": "^5.8.38",
+    "babel-loader": "^5.4.2",
+    "css-loader": "^0.15.6",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "material-ui": "^0.16.6",
+    "postcss-color-rebeccapurple": "^1.2.0",
+    "postcss-loader": "^0.4.4",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-tap-event-plugin": "^2.0.1",
+    "react-to-html-webpack-plugin": "^2.2.0",
+    "style-loader": "^0.12.4",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  }
 }
