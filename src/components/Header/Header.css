@@ -1,6 +1,7 @@
 .wrapper {
     width: 100%;
     background-color: var(--black);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
 }
 .header {
     width: 1076px;

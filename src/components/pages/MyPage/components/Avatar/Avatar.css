@@ -1,0 +1,19 @@
+.avatarBlock {
+    width: 250px;
+    float: right;
+    margin-top: 15px;
+}
+.avatar {
+    border-radius: 2px 2px 0 0;
+    display: block;
+    padding: 0;
+}
+.controls {
+    padding: 15px;
+}
+.button {
+    margin-bottom: 15px;
+}
+.button:last-child {
+    margin-bottom: 0;
+}

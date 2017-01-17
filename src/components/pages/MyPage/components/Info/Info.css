@@ -1,0 +1,14 @@
+.info {
+    height: 580px;
+    width: 566px;
+    margin: 15px;
+    display: block;
+    float: left;
+    padding: 15px;
+}
+.status{
+    float: right;
+    display: block;
+    margin-top: 5px;
+    color: var(--secondaryText);
+}

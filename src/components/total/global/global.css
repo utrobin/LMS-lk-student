@@ -1,15 +1,28 @@
-:root{
-    --black: #212121;
+:root {
     --white: #FAFAFA;
     --grey: #9E9E9E;
+    --secondaryText: #757575;
     --greyHover: rgba(153, 153, 153, 0.2);
+    --black: #212121;
 }
-html{
+html {
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
 }
-body{
+body {
     font-size: 15px;
     line-height: 24px;
     background-color: var(--grey);
+}
+h2 {
+    font-size: 19px;
+    line-height: 25px;
+}
+h4 {
+    font-size: 12.5px;
+    line-height: 18px;
+}
+.content {
+    margin: auto;
+    width: 1076px;
 }
