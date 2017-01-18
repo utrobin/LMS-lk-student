@@ -18,19 +18,19 @@ import styles from './LeftMenu.css';
 const LeftMenu = () => (
   <div className={ styles.menu }>
     <List>
-      <ListItem primaryText="Моя страница" leftIcon={<Home color={ colors.black } />} />
-      <ListItem primaryText="Домашние задания и РК" leftIcon={<School color={ colors.black } />} />
-      <ListItem primaryText="Проекты" leftIcon={<Work color={ colors.black } />} />
-      <ListItem primaryText="Друзья" leftIcon={<People color={ colors.black } />} />
-      <ListItem primaryText="Сообщения" leftIcon={<Chat color={ colors.black } />} />
-      <ListItem primaryText="Расписание" leftIcon={<Schedule color={ colors.black } />} />
-      <ListItem primaryText="Успеваемость" leftIcon={<Timeline color={ colors.black } />} />
-      <ListItem primaryText="Посещаемость" leftIcon={<Event color={ colors.black } />} />
+      <ListItem primaryText="Моя страница" leftIcon={<Home color={ colors.icon } />} />
+      <ListItem primaryText="Домашние задания и РК" leftIcon={<School color={ colors.icon } />} />
+      <ListItem primaryText="Проекты" leftIcon={<Work color={ colors.icon } />} />
+      <ListItem primaryText="Друзья" leftIcon={<People color={ colors.icon } />} />
+      <ListItem primaryText="Сообщения" leftIcon={<Chat color={ colors.icon } />} />
+      <ListItem primaryText="Расписание" leftIcon={<Schedule color={ colors.icon } />} />
+      <ListItem primaryText="Успеваемость" leftIcon={<Timeline color={ colors.icon } />} />
+      <ListItem primaryText="Посещаемость" leftIcon={<Event color={ colors.icon } />} />
     </List>
     <Divider />
     <List>
-      <ListItem primaryText="Настройки" rightIcon={<Settings color={ colors.black } />} />
-      <ListItem primaryText="Обратная связь" rightIcon={<ActionInfo color={ colors.black } />} />
+      <ListItem primaryText="Настройки" rightIcon={<Settings color={ colors.icon } />} />
+      <ListItem primaryText="Обратная связь" rightIcon={<ActionInfo color={ colors.icon } />} />
     </List>
   </div>
 );

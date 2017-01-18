@@ -1,0 +1,38 @@
+.friends {
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.span {
+    font-size: 12px;
+    line-height: 12px;
+    padding: 0;
+    display: block;
+    color: var(--secondText);
+}
+.a:hover{
+    text-decoration: none;
+}
+.mark {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.a{
+    display: block;
+}
+.link {
+    composes: a;
+    text-align: center;
+    padding: 0 10px;
+    font-size: 12px;
+    line-height: 13px;
+    margin-top: 3px;
+}
+.profile {
+    margin-top: 10px;
+}
+.profile img{
+    display: block!important;
+    margin: 0 10px;
+}

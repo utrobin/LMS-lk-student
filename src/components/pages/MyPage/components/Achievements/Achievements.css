@@ -1,0 +1,41 @@
+.achievements {
+    padding: 15px;
+    margin-top: 15px;
+}
+.span {
+    font-size: 12px;
+    line-height: 12px;
+    padding: 0;
+    display: block;
+    margin-bottom: 10px;
+    color: var(--secondText);
+}
+.a:hover{
+    text-decoration: none;
+}
+.spanRating {
+    composes: span;
+    float: left;
+    margin-left: 10px;
+    width: 80px;
+    color: var(--secondText);
+}
+.i {
+    composes: span;
+    color: var(--textColor);
+}
+.spanSupplement {
+    composes: span;
+    display: inline;
+    color: var(--secondText);
+}
+.performance {
+    margin-bottom: 5px;
+}
+.mark {
+    display: flex;
+    justify-content: space-between;
+}
+.mark img {
+    cursor: pointer;
+}

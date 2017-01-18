@@ -50,7 +50,7 @@ export default class Header extends React.Component {
     return (
       <header className={ styles.wrapper }>
         <div className={ styles.header }>
-          <img className={ styles.logo } src="static/img/logo.png" width="115" height="58" alt="logo"/>
+          <img className={ styles.logo } src="static/img/logo.png" width="126" height="55" alt="logo"/>
 
           <IconMenu
             iconButtonElement={<IconButton></IconButton>}

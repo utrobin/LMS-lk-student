@@ -1,9 +1,12 @@
 :root {
     --white: #FAFAFA;
-    --grey: #9E9E9E;
-    --secondaryText: #757575;
+    --grey: #303030;
     --greyHover: rgba(153, 153, 153, 0.2);
     --black: #212121;
+    --icon: #FFFFFF;
+    --textColor: #FFFFFF;
+    --secondText: rgba(255, 255, 255, 0.7);
+    --linkText: #0097A7;
 }
 html {
     font-family: 'Roboto', sans-serif;
@@ -15,14 +18,30 @@ body {
     background-color: var(--grey);
 }
 h2 {
-    font-size: 19px;
-    line-height: 25px;
+     font-size: 19px;
+     line-height: 25px;
+}
+h3 {
+    font-size: 16px;
+    line-height: 24px;
 }
 h4 {
     font-size: 12.5px;
     line-height: 18px;
 }
+a {
+    color: var(--linkText);
+}
+a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
 .content {
     margin: auto;
     width: 1076px;
+}
+.more {
+    margin-top: 15px;
+    margin-left: 165px;
+    display: block;
 }

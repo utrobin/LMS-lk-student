@@ -1,12 +1,19 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
 import Info from './components/Info/Info';
 import Avatar from './components/Avatar/Avatar';
+import Achievements from './components/Achievements/Achievements';
+import Friends from './components/Friends/Friends';
+
+import styles from './MyPage.css';
 
 const MyPage = () => (
     <div>
       <Info />
-      <Avatar />
+      <div className={ styles.rightBlock }>
+        <Avatar />
+        <Achievements />
+        <Friends />
+      </div>
     </div>
 );
 

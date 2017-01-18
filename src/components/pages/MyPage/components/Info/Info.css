@@ -1,14 +1,53 @@
 .info {
-    height: 580px;
     width: 566px;
     margin: 15px;
     display: block;
     float: left;
     padding: 15px;
 }
-.status{
+.status {
     float: right;
     display: block;
     margin-top: 5px;
-    color: var(--secondaryText);
+    color: var(--secondText);
+}
+.group {
+    color: var(--secondText);
+}
+.shortInfo {
+    margin-bottom: 11px;
+}
+.data {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 19px;
+}
+.span {
+    float: left;
+    display: block;
+    width: 165px;
+}
+.label {
+    margin-top: 5px;
+}
+.social {
+    width: 25px;
+    float: right;
+}
+.socialIcon {
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+.socialIcon:hover {
+    opacity: 0.8;
+}
+.activity {
+    float: right;
+}
+.rating {
+    font-size: 13px;
+    line-height: 27px;
+    color: var(--secondText);
+    display: block;
+    text-align: right;
 }
