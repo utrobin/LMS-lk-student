@@ -15,7 +15,10 @@
   },
   "keywords": [],
   "author": "Utrobin",
-  "dependencies": {},
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "style-loader": "^0.12.4"
+  },
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
     "babel-core": "^5.8.38",
@@ -28,11 +31,14 @@
     "postcss-loader": "^0.4.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-hot-loader": "^1.3.1",
     "react-tap-event-plugin": "^2.0.1",
     "react-to-html-webpack-plugin": "^2.2.0",
     "style-loader": "^0.12.4",
     "url-loader": "^0.5.7",
     "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-hot-middleware": "^2.15.0"
   }
 }

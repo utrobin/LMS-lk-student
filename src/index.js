@@ -37,3 +37,5 @@ render(
   <Wrapper />,
   document.querySelector('.index')
 );
+
+module.hot.accept();
