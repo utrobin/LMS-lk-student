@@ -1,16 +1,22 @@
 :root {
     --white: #FAFAFA;
-    --grey: #303030;
+    --grey: #F5F5F5;
     --greyHover: rgba(153, 153, 153, 0.2);
     --black: #212121;
+
     --icon: #FFFFFF;
-    --textColor: #FFFFFF;
-    --secondText: rgba(255, 255, 255, 0.7);
-    --linkText: #0097A7;
+    --textColor: #000;
+    --secondText: rgba(0, 0, 0, 0.54);
+    --alternateTextColor: rgba(255, 255, 255, 1);
+    --linkText: #4078c0;
+    --primaryColor: rgb(0, 188, 212);
+    --success: #1B5E20;
+    --captain: #FBC02D;
 }
 html {
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
 }
 body {
     font-size: 15px;
@@ -39,9 +45,21 @@ a:hover {
 .content {
     margin: auto;
     width: 1076px;
+    padding: 0 15px;
 }
 .more {
     margin-top: 15px;
     margin-left: 165px;
     display: block;
+}
+.plugHeader {
+    height: 64px;
+    margin-bottom: 15px;
+}
+.plugLeftMenu {
+    width: 230px;
+    float: left;
+    display: block;
+    margin-top: -8px;
+    height: 600px;
 }

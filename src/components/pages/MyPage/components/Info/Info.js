@@ -39,11 +39,11 @@ const MyPage = () => (
       </div>
       <div className={ styles.label }>
         <span className={ styles.span }>Моб. телефон</span>
-        <a>+7 925 197 52 86</a>
+        <span>+7 925 197 52 86</span>
       </div>
       <FlatButton
         style={{ marginTop: 5, width: '100%', textAlign: 'left' }}
-        labelStyle={{ textTransform: 'none', marginLeft: 165, paddingLeft: 0, color: colors.linkText, fontSize: 13 }}
+        labelStyle={{ marginLeft: 165, paddingLeft: 0, color: colors.linkText, fontSize: 13 }}
         label="Показать подробную информацию"
       />
     </div>

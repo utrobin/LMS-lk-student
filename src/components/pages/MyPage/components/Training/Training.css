@@ -1,0 +1,88 @@
+.traning {
+    width: 566px;
+    display: block;
+    padding: 15px;
+    margin-top: 15px;
+}
+.label {
+    display: block;
+    float: left;
+    font-size: 12px;
+    line-height: 26px;
+    width: 165px;
+    color: var(--secondText);
+}
+.where {
+    font-size: 12px;
+    line-height: 12px;
+    display: inline-block;
+    margin-bottom: 15px;
+    margin-right: 24px;
+}
+.where:last-child {
+    margin-bottom: 15px;
+}
+.i {
+    background-color: var(--primaryColor);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    border-radius: 15px;
+    margin-top: -9px;
+    margin-right: 12px;
+    color: var(--alternateTextColor)
+}
+.h3 {
+    margin-bottom: 15px;
+    line-height: 16px;
+}
+.perfomance {
+    margin-top: -7px;
+    color: var(--secondText);
+}
+.subject {
+    display: block;
+    font-size: 12px;
+}
+.subject:after, .clear {
+    clear: both;
+    content: '';
+    display: block;
+}
+.span {
+    display: block;
+    float: left;
+    margin-right: 6px;
+    color: var(--secondText);
+}
+.divider {
+    padding-top: 11.5px;
+}
+.rating {
+    display: block;
+    float: right;
+    margin-left: 6px;
+    text-transform: uppercase;
+}
+.mainSpan {
+    composes: span;
+    line-height: 37px;
+}
+.dividerMain {
+    padding-top: 18px;
+}
+.semesters {
+    justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+}
+.semester {
+    width: 80%;
+    margin-bottom: 15px;
+}
+.semester:last-child {
+    margin-bottom: 0;
+}

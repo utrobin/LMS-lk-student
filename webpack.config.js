@@ -5,10 +5,8 @@ var path = require('path');
 var fs = require('fs');
 
 module.exports = {
-  entry: [
-    'webpack-hot-middleware/client',
-    './src/index.js' // Your appʼs entry point
-  ],
+  entry: './src/index.js',
+
 
   devtool: 'cheap-module-eval-source-map',
 
@@ -20,6 +18,13 @@ module.exports = {
 
   module: {
     loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        plugins: ['transform-runtime'],
+        loader: 'babel-loader',
+        query: {presets: ['es2015', 'react', 'stage-2']}
+      },
       { test: /\.css$/,
         loader: ExtractTextPlugin.extract(
           'style-loader',
@@ -27,7 +32,6 @@ module.exports = {
         )
       },
       { test: /\.svg$/, loader: "url-loader?limit=10000&mimetype=image/svg+xml" },
-      { test: /\.jsx?$/, loaders: ['react-hot', 'babel-loader'], exclude: /node_modules/, include: path.join(__dirname, 'src') }
     ]
   },
 
@@ -37,12 +41,10 @@ module.exports = {
   ],
 
   resolve: {
-    extensions: ['', '.js', '.jsx'],
     modulesDirectories: ['node_modules', 'components'],
   },
 
   plugins: [
     new ExtractTextPlugin('style.css', { allChunks: true }),
-    new webpack.HotModuleReplacementPlugin()
   ]
 };

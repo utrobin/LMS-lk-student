@@ -30,12 +30,21 @@
     color: var(--secondText);
 }
 .performance {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 .mark {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 .mark img {
     cursor: pointer;
+    margin-top: 15px;
+}
+.h {
+    font-size: 16px;
+    line-height: 16px;
+    padding: 0;
+    display: block;
+    color: var(--textColor);
 }

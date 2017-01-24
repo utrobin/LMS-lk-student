@@ -4,11 +4,11 @@
     margin-bottom: 15px;
 }
 .span {
-    font-size: 12px;
-    line-height: 12px;
+    font-size: 16px;
+    line-height: 16px;
     padding: 0;
     display: block;
-    color: var(--secondText);
+    color: var(--textColor);
 }
 .a:hover{
     text-decoration: none;
@@ -19,6 +19,8 @@
     flex-wrap: wrap;
 }
 .a{
+    font-size: 16px;
+    line-height: 16px;
     display: block;
 }
 .link {

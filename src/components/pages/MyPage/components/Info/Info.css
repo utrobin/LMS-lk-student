@@ -1,8 +1,6 @@
 .info {
     width: 566px;
-    margin: 15px;
     display: block;
-    float: left;
     padding: 15px;
 }
 .status {
@@ -26,6 +24,7 @@
     float: left;
     display: block;
     width: 165px;
+    color: var(--secondText);
 }
 .label {
     margin-top: 5px;

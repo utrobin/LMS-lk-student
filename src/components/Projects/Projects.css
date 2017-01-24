@@ -1,0 +1,101 @@
+.project {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+.h3 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    color: var(--secondText);
+}
+.projects {
+    margin-bottom: 50px;
+}
+.background {
+    height: 150px;
+    border-radius: 2px 2px 0 0;
+    background-position: 50%;
+    background-size: cover;
+}
+.plug {
+    height: 150px;
+    border-radius: 2px 2px 0 0;
+    width: 566px;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+}
+.people {
+    margin-top: -15px;
+    margin-left: 15px;
+    position: absolute;
+    z-index: 3;
+}
+.people img {
+    margin-right: 3px;
+    cursor: pointer;
+    display: inline-block!important;
+}
+.content {
+    margin-top: 30px;
+    margin-left: 15px;
+    padding-bottom: 15px;
+    margin-right: 15px;
+}
+.h4 {
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 16px;
+    margin-bottom: 5px;
+}
+.span {
+    line-height: 16px;
+    font-size: 14px;
+    color: var(--secondText);
+}
+.tags {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.tags a {
+    margin-right: 8px;
+}
+.hr {
+    margin-top: 10px;
+}
+.supplement {
+    margin-top: 15px;
+    line-height: 12px;
+}
+.status {
+    font-size: 14px;
+    line-height: 16px;
+}
+.statusColor {
+    color: var(--success);
+}
+.iconsWrapper {
+    float: right;
+    margin-top: -7px;
+}
+.numbers {
+    margin-left: 10px;
+}
+.icons {
+    align-items: center;
+    display: flex;
+}
+.icon {
+    align-items: center;
+    display: flex;
+    margin-left: 10px;
+}
+.a {
+    font-size: 14px;
+    line-height: 16px;
+}
+.github {
+    position: absolute;
+    right: 15px;
+    top: 135px;
+}

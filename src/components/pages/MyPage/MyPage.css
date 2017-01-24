@@ -1,5 +1,9 @@
+.myPage {
+    display: flex;
+}
 .rightBlock {
-    float: right;
     width: 250px;
 }
-.profile {}
+.main {
+    margin: 0 15px;
+}
