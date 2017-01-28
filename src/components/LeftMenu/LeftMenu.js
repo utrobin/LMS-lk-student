@@ -15,11 +15,11 @@ import { colors } from '../total/global/globalCSS';
 
 import styles from './LeftMenu.css';
 
-const LeftMenu = () => (
+const LeftMenu = ({ changePage }) => (
   <div className={ styles.menu }>
     <List>
-      <ListItem primaryText="Моя страница" leftIcon={<Home color={ colors.icon } />} />
-      <ListItem primaryText="Домашние задания и РК" leftIcon={<School color={ colors.icon } />} />
+      <ListItem primaryText="Моя страница" onTouchTap={ () => changePage(0) } leftIcon={<Home color={ colors.icon } />} />
+      <ListItem primaryText="Домашние задания и РК" onTouchTap={ () => changePage(1) } leftIcon={<School color={ colors.icon } />} />
       <ListItem primaryText="Проекты" leftIcon={<Work color={ colors.icon } />} />
       <ListItem primaryText="Друзья" leftIcon={<People color={ colors.icon } />} />
       <ListItem primaryText="Сообщения" leftIcon={<Chat color={ colors.icon } />} />

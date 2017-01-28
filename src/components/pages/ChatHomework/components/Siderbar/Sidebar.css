@@ -1,0 +1,30 @@
+.wrapperSidebar  {
+    width: 250px;
+    margin-left: 15px;
+    display: block;
+    font-size: 13px;
+    align-items: flex-start;
+}
+.sidebar {
+    padding: 15px;
+}
+.item {
+    display: block;
+    margin-bottom: 10px;
+}
+.item span{
+    text-align: center;
+}
+.label {
+    display: flex;
+    color: var(--secondText);
+    line-height: 13px;
+    align-items: center;
+}
+.status {
+    color: var(--success);
+    font-weight: 500;
+}
+.icon {
+    margin-right: 10px;
+}

@@ -7,11 +7,16 @@
     --icon: #FFFFFF;
     --textColor: #000;
     --secondText: rgba(0, 0, 0, 0.54);
+    --thirdText: rgb(117, 117, 117);
     --alternateTextColor: rgba(255, 255, 255, 1);
     --linkText: #4078c0;
     --primaryColor: rgb(0, 188, 212);
     --success: #1B5E20;
     --captain: #FBC02D;
+    --warning: #FF9800;
+    --error: rgb(255, 64, 129);
+
+    --sizeHeader: 79px;
 }
 html {
     font-family: 'Roboto', sans-serif;

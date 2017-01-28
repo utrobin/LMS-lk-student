@@ -1,0 +1,79 @@
+.span {
+    color: var(--secondText);
+    margin-bottom: 15px;
+    display: block;
+    margin-top: 8px;
+    font-size: 16px;
+}
+.homework {
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.homework:last-child {
+    margin-bottom: 50px;
+}
+.homework p {
+    font-size: 14px;
+    margin-bottom: 10px;
+    line-height: 18px;
+}
+.h2 {
+    color: var(--textColor);
+}
+.h2:hover {
+    text-decoration: none;
+}
+.dedline {
+    float: right;
+    font-size: 14px;
+    line-height: 14px;
+    color: var(--secondText);
+}
+.dedlineData {
+    color: var(--warning);
+}
+.supplement {
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+}
+.status {
+    margin-right: 25px;
+
+}
+.statusValue {
+    color: var(--warning);
+}
+.iconsWrapper {
+    float: right;
+    margin-top: 7px;
+}
+.numbers {
+    margin-left: 10px;
+}
+.icons {
+    align-items: center;
+    display: flex;
+}
+.icon {
+    align-items: center;
+    display: flex;
+    margin-left: 10px;
+}
+.avtor {
+    margin-right: 25px;
+    display: inline-flex;
+    align-items: center;
+    margin-top: -7px;
+    margin-bottom: -7px;
+}
+.avtor img {
+    margin-right: 10px;
+}
+.hr {
+    margin-top: 15px;
+}
+.button {
+    margin-bottom: 10px;
+}
