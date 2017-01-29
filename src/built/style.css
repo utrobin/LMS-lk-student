@@ -44,13 +44,13 @@
 .Header__dropdownMenu___1aNAv button{
     position: absolute!important;
 }.LeftMenu__menu___he-Rn {
-    width: 230px;
+    width: 200px;
     display: block;
     position: fixed;
     z-index: 10;
     margin-top: -8px;
 }.Info__info___2eejH {
-    width: 566px;
+
     display: block;
     padding: 15px;
 }
@@ -209,7 +209,6 @@
     display: block!important;
     margin: 0 10px;
 }.Skills__skills___1mc7g {
-    width: 566px;
     display: block;
     padding: 15px;
     margin-top: 15px;
@@ -269,7 +268,6 @@
     width: 260px;
 }
 .Training__traning___3OiCv {
-    width: 566px;
     display: block;
     padding: 15px;
     margin-top: 15px;
@@ -363,12 +361,6 @@
     margin-bottom: 15px;
     position: relative;
 }
-.Projects__h3___Mkm9S {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 16px;
-    color: var(--secondText);
-}
 .Projects__projects___1RJwY {
     margin-bottom: 50px;
 }
@@ -381,12 +373,12 @@
 .Projects__plug___1zT-4 {
     height: 150px;
     border-radius: 2px 2px 0 0;
-    width: 566px;
-    background-color: rgba(0, 0, 0, 0.4);
+    width: 595px;
+    background-color: rgba(0, 0, 0, 0.2);
     position: absolute;
 }
 .Projects__people___3i81j {
-    margin-top: -15px;
+    margin-top: -16px;
     margin-left: 15px;
     position: absolute;
     z-index: 3;
@@ -394,6 +386,8 @@
 .Projects__people___3i81j img {
     margin-right: 3px;
     cursor: pointer;
+    padding: 1px;
+    background-color: #fff!important;
     display: inline-block!important;
 }
 .Projects__content___e0wzI {
@@ -436,10 +430,11 @@
 }
 .Projects__iconsWrapper___1lwZD {
     float: right;
-    margin-top: -7px;
+    margin-top: -4px;
 }
 .Projects__numbers___16C7O {
     margin-left: 10px;
+    font-size: 12px;
 }
 .Projects__icons___3Z4yM {
     -webkit-box-align: center;
@@ -476,6 +471,12 @@
 }
 .MyPage__main___24EyX {
     margin: 0 15px;
+}
+.MyPage__h3___2VR_a {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    color: var(--secondText);
 }.Homework__span___DuyjE {
     color: var(--secondText);
     margin-bottom: 15px;
@@ -527,7 +528,8 @@
 }
 .Homework__iconsWrapper___17_Gf {
     float: right;
-    margin-top: 7px;
+    margin-top: 11px;
+    font-size: 12px;
 }
 .Homework__numbers___3XoCk {
     margin-left: 10px;
@@ -690,7 +692,7 @@
 }
 .ChatHomework__chat___3SsOM {
     height: calc(100vh - var(--sizeHeader) - 15px);
-    width: 566px;
+    /*width: 566px;*/
     min-height: 400px;
 }
 .ChatHomework__additionally___1xVZj {
@@ -736,6 +738,47 @@
 }
 .ChatHomework__send___3D-ax {
     margin: 0 15px;
+}
+.ChatHomework__sidebar___29k0V {
+    width: 250px;
+}.Performance__perfomance___2DEJK {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    padding: 15px;
+    margin-left: 15px;
+}
+.Performance__perfomance___2DEJK table, .Performance__perfomance___2DEJK td, .Performance__perfomance___2DEJK th {
+    vertical-align: middle;
+}
+.Performance__perfomance___2DEJK th:first-child, .Performance__perfomance___2DEJK td:first-child {
+    width: 15px;
+}
+.Performance__perfomance___2DEJK th, .Performance__perfomance___2DEJK td {
+    text-align: center!important;
+}
+.Performance__pointSuccess___1juI2{
+    color: var(--success);
+}.Projects__Projects___1LR2C  {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.Projects__rightBlock___3BXuC {
+    width: 250px;
+    padding: 0 15px 15px;
+}
+.Projects__main___17ktJ {
+    margin: -15px 15px;
+}
+.Projects__button___1VWjY {
+    margin-top: 15px;
+}
+.Projects__pagination___2OE4A {
+    margin-top: -30px;
+    margin-bottom: 50px;
+    text-align: center;
 }/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -847,7 +890,7 @@ a:hover {
     margin-bottom: 15px;
 }
 .global__plugLeftMenu___2ZX0g {
-    width: 230px;
+    width: 200px;
     float: left;
     display: block;
     margin-top: -8px;

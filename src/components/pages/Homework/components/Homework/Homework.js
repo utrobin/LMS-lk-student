@@ -23,6 +23,7 @@ const Homework = () => (
             label="Сдать задание"
             fullWidth={true}
             secondary={true}
+            onTouchTap={ () => window.changePages(2) }
           />
         </div>
         дедлайн: <data className={ styles.dedlineData } style={{ color: colors.error }}>8 января 2016 г.</data>
@@ -57,15 +58,15 @@ const Homework = () => (
       <div className={ styles.iconsWrapper }>
         <div className={ styles.icons }>
           <div className={ styles.icon }>
-            <Avatar size={30} color={ colors.icon } icon={<Visibility />} />
+            <Avatar size={24} color={ colors.icon } icon={<Visibility />} />
             <i className={ styles.numbers }>78</i>
           </div>
           <div className={ styles.icon }>
-            <Avatar size={30} color={ colors.icon } icon={<Plus />} />
+            <Avatar size={24} color={ colors.icon } icon={<Plus />} />
             <i className={ styles.numbers }>8</i>
           </div>
           <div className={ styles.icon }>
-            <Avatar size={30} color={ colors.icon } icon={<Comment />} />
+            <Avatar size={24} color={ colors.icon } icon={<Comment />} />
             <i className={ styles.numbers }>7</i>
           </div>
         </div>
@@ -92,6 +93,7 @@ const Homework = () => (
             fullWidth={true}
             labelStyle={{ color: '#fff' }}
             backgroundColor={ colors.warning }
+            onTouchTap={ () => window.changePages(2) }
           />
         </div>
         дедлайн: <data className={ styles.dedlineData }>25 января 2016 г.</data>
@@ -116,15 +118,15 @@ const Homework = () => (
       <div className={ styles.iconsWrapper }>
         <div className={ styles.icons }>
           <div className={ styles.icon }>
-            <Avatar size={30} color={ colors.icon } icon={<Visibility />} />
+            <Avatar size={24} color={ colors.icon } icon={<Visibility />} />
             <i className={ styles.numbers }>78</i>
           </div>
           <div className={ styles.icon }>
-            <Avatar size={30} color={ colors.icon } icon={<Plus />} />
+            <Avatar size={24} color={ colors.icon } icon={<Plus />} />
             <i className={ styles.numbers }>8</i>
           </div>
           <div className={ styles.icon }>
-            <Avatar size={30} color={ colors.icon } icon={<Comment />} />
+            <Avatar size={24} color={ colors.icon } icon={<Comment />} />
             <i className={ styles.numbers }>7</i>
           </div>
         </div>
@@ -151,6 +153,7 @@ const Homework = () => (
             fullWidth={ true }
             backgroundColor={ colors.success }
             labelColor='#fff'
+            onTouchTap={ () => window.changePages(2) }
           />
         </div>
         дедлайн: <data className={ styles.dedlineData } style={{ color: colors.success }}>14 января 2016 г.</data>
@@ -173,15 +176,15 @@ const Homework = () => (
       <div className={ styles.iconsWrapper }>
         <div className={ styles.icons }>
           <div className={ styles.icon }>
-            <Avatar size={30} color={ colors.icon } icon={<Visibility />} />
+            <Avatar size={24} color={ colors.icon } icon={<Visibility />} />
             <i className={ styles.numbers }>210</i>
           </div>
           <div className={ styles.icon }>
-            <Avatar size={30} color={ colors.icon } icon={<Plus />} />
+            <Avatar size={24} color={ colors.icon } icon={<Plus />} />
             <i className={ styles.numbers }>5</i>
           </div>
           <div className={ styles.icon }>
-            <Avatar size={30} color={ colors.icon } icon={<Comment />} />
+            <Avatar size={24} color={ colors.icon } icon={<Comment />} />
             <i className={ styles.numbers }>9</i>
           </div>
         </div>

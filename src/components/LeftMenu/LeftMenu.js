@@ -15,22 +15,31 @@ import { colors } from '../total/global/globalCSS';
 
 import styles from './LeftMenu.css';
 
+const st = {
+  fontSize: '14px'
+};
+
 const LeftMenu = ({ changePage }) => (
   <div className={ styles.menu }>
     <List>
-      <ListItem primaryText="Моя страница" onTouchTap={ () => changePage(0) } leftIcon={<Home color={ colors.icon } />} />
-      <ListItem primaryText="Домашние задания и РК" onTouchTap={ () => changePage(1) } leftIcon={<School color={ colors.icon } />} />
-      <ListItem primaryText="Проекты" leftIcon={<Work color={ colors.icon } />} />
-      <ListItem primaryText="Друзья" leftIcon={<People color={ colors.icon } />} />
-      <ListItem primaryText="Сообщения" leftIcon={<Chat color={ colors.icon } />} />
-      <ListItem primaryText="Расписание" leftIcon={<Schedule color={ colors.icon } />} />
-      <ListItem primaryText="Успеваемость" leftIcon={<Timeline color={ colors.icon } />} />
-      <ListItem primaryText="Посещаемость" leftIcon={<Event color={ colors.icon } />} />
+      <ListItem style={ st } primaryText="Моя страница" onTouchTap={ () => changePage(0) } leftIcon={<Home color={ colors.icon } />} />
+      <ListItem
+        style={ st }
+        primaryText={`Домашние задания и РК`}
+        onTouchTap={ () => changePage(1) }
+        leftIcon={<School color={ colors.icon } />}
+      />
+      <ListItem style={ st } primaryText="Проекты" onTouchTap={ () => changePage(4) } leftIcon={<Work color={ colors.icon } />} />
+      <ListItem style={ st } primaryText="Друзья" leftIcon={<People color={ colors.icon } />} />
+      <ListItem style={ st } primaryText="Сообщения" leftIcon={<Chat color={ colors.icon } />} />
+      <ListItem style={ st } primaryText="Расписание" leftIcon={<Schedule color={ colors.icon } />} />
+      <ListItem style={ st } primaryText="Успеваемость" onTouchTap={ () => changePage(3) } leftIcon={<Timeline color={ colors.icon } />} />
+      <ListItem style={ st } primaryText="Посещаемость" leftIcon={<Event color={ colors.icon } />} />
     </List>
     <Divider />
     <List>
-      <ListItem primaryText="Настройки" rightIcon={<Settings color={ colors.icon } />} />
-      <ListItem primaryText="Обратная связь" rightIcon={<ActionInfo color={ colors.icon } />} />
+      <ListItem style={ st } primaryText="Настройки" rightIcon={<Settings color={ colors.icon } />} />
+      <ListItem style={ st } primaryText="Обратная связь" rightIcon={<ActionInfo color={ colors.icon } />} />
     </List>
   </div>
 );

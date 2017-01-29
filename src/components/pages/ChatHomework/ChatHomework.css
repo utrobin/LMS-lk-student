@@ -7,7 +7,7 @@
 }
 .chat {
     height: calc(100vh - var(--sizeHeader) - 15px);
-    width: 566px;
+    /*width: 566px;*/
     min-height: 400px;
 }
 .additionally {
@@ -37,4 +37,7 @@
 }
 .send {
     margin: 0 15px;
+}
+.sidebar {
+    width: 250px;
 }

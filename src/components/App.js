@@ -4,6 +4,8 @@ import LeftMenu from './LeftMenu/LeftMenu';
 import MyPage from './pages/MyPage/MyPage';
 import Homeworks from './pages/Homework/Homeworks';
 import ChatHomework from './pages/ChatHomework/ChatHomework';
+import Performance from './pages/Performance/Performance';
+import Projects from './pages/Projects/Projects';
 
 import './total/reset/reset.css';
 import styles from './total/global/global.css';
@@ -11,7 +13,9 @@ import styles from './total/global/global.css';
 const pages = [
   <MyPage />,
   <Homeworks />,
-  <ChatHomework />
+  <ChatHomework />,
+  <Performance />,
+  <Projects />
 ];
 
 export default class App extends React.Component {
@@ -19,14 +23,14 @@ export default class App extends React.Component {
     super();
 
     this.state = {
-      pageId: 2
+      pageId: 4
     };
 
     this.changePages = this.changePages.bind(this);
+    window.changePages = this.changePages.bind(this);
   }
 
   changePages(i) {
-    console.log(this);
     this.setState({ pageId: i })
   }
 

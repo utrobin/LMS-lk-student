@@ -3,12 +3,6 @@
     margin-bottom: 15px;
     position: relative;
 }
-.h3 {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 16px;
-    color: var(--secondText);
-}
 .projects {
     margin-bottom: 50px;
 }
@@ -21,12 +15,12 @@
 .plug {
     height: 150px;
     border-radius: 2px 2px 0 0;
-    width: 566px;
-    background-color: rgba(0, 0, 0, 0.4);
+    width: 595px;
+    background-color: rgba(0, 0, 0, 0.2);
     position: absolute;
 }
 .people {
-    margin-top: -15px;
+    margin-top: -16px;
     margin-left: 15px;
     position: absolute;
     z-index: 3;
@@ -34,6 +28,8 @@
 .people img {
     margin-right: 3px;
     cursor: pointer;
+    padding: 1px;
+    background-color: #fff!important;
     display: inline-block!important;
 }
 .content {
@@ -76,10 +72,11 @@
 }
 .iconsWrapper {
     float: right;
-    margin-top: -7px;
+    margin-top: -4px;
 }
 .numbers {
     margin-left: 10px;
+    font-size: 12px;
 }
 .icons {
     align-items: center;

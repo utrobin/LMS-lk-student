@@ -47,7 +47,8 @@
 }
 .iconsWrapper {
     float: right;
-    margin-top: 7px;
+    margin-top: 11px;
+    font-size: 12px;
 }
 .numbers {
     margin-left: 10px;

@@ -15,6 +15,7 @@ const MyPage = () => (
         <Info />
         <Training />
         <Skills />
+        <h3 className={ styles.h3 }>Проекты</h3>
         <Projects />
       </div>
       <div className={ styles.rightBlock }>

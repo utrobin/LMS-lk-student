@@ -78,7 +78,9 @@ const ChatHomework = () => (
         />
       </div>
     </Paper>
-    <Sidebar />
+    <div className={ styles.sidebar }>
+      <Sidebar />
+    </div>
   </div>
 );
 
