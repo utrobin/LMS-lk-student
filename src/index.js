@@ -1,9 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './components/App';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { cyan500, grey100, cyan700, grey800, grey900 } from 'material-ui/styles/colors';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import TemplateWithLeftMenu from './templates/TemplateWithLeftMenu';
+import MyPage from './Pages/MyPage/MyPage';
+import Homeworks from './Pages/Homework/Homeworks';
+import ChatHomework from './Pages/ChatHomework/ChatHomework';
+import Performance from './Pages/Performance/Performance';
+import Projects from './Pages/Projects/Projects';
+import RoutesMap from './RoutesMap/RoutesMap';
 
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
@@ -27,13 +33,21 @@ const muiTheme = getMuiTheme({
   },
 });
 
-const Wrapper = () => (
+const App = () => (
   <MuiThemeProvider muiTheme={muiTheme}>
-    <App />
+    <Router history={browserHistory}>
+      <Route component={ TemplateWithLeftMenu }>
+        <Route path={ RoutesMap.myPage } component={ MyPage } />
+        <Route path={ RoutesMap.homework } component={ Homeworks } />
+        <Route path={ RoutesMap.projects } component={ Projects } />
+        <Route path={ RoutesMap.chatHomework } component={ ChatHomework } />
+        <Route path={ RoutesMap.performance } component={ Performance } />
+      </Route>
+    </Router>
   </MuiThemeProvider>
 );
 
 render(
-  <Wrapper />,
+  <App />,
   document.querySelector('.index')
 );

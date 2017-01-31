@@ -11,7 +11,9 @@ import Schedule from 'material-ui/svg-icons/action/schedule';
 import Event from 'material-ui/svg-icons/notification/event-available';
 import Divider from 'material-ui/Divider';
 import ActionInfo from 'material-ui/svg-icons/action/info';
-import { colors } from '../total/global/globalCSS';
+import { colors } from '../../total/global/globalCSS';
+import { browserHistory } from 'react-router';
+import RoutesMap from '../../RoutesMap/RoutesMap';
 
 import styles from './LeftMenu.css';
 
@@ -22,15 +24,18 @@ const st = {
 const LeftMenu = ({ changePage }) => (
   <div className={ styles.menu }>
     <List>
-      <ListItem style={ st } primaryText="Моя страница" onTouchTap={ () => changePage(0) } leftIcon={<Home color={ colors.icon } />} />
-      <ListItem
-        style={ st }
-        primaryText={`Домашние задания и РК`}
-        onTouchTap={ () => changePage(1) }
-        leftIcon={<School color={ colors.icon } />}
+      <ListItem style={ st } primaryText="Моя страница" leftIcon={<Home color={ colors.icon } />}
+                onTouchTap={ () => browserHistory.push(RoutesMap.myPage) }
       />
-      <ListItem style={ st } primaryText="Проекты" onTouchTap={ () => changePage(4) } leftIcon={<Work color={ colors.icon } />} />
-      <ListItem style={ st } primaryText="Друзья" leftIcon={<People color={ colors.icon } />} />
+      <ListItem style={ st } primaryText={`Домашние задания и РК`} leftIcon={<School color={ colors.icon } />}
+                onTouchTap={ () => browserHistory.push(RoutesMap.homework) }
+      />
+      <ListItem style={ st } primaryText="Проекты"  leftIcon={<Work color={ colors.icon } />}
+                onTouchTap={ () => browserHistory.push(RoutesMap.projects) }
+      />
+      <ListItem style={ st } primaryText="Друзья" leftIcon={<People color={ colors.icon } />}
+
+      />
       <ListItem style={ st } primaryText="Сообщения" leftIcon={<Chat color={ colors.icon } />} />
       <ListItem style={ st } primaryText="Расписание" leftIcon={<Schedule color={ colors.icon } />} />
       <ListItem style={ st } primaryText="Успеваемость" onTouchTap={ () => changePage(3) } leftIcon={<Timeline color={ colors.icon } />} />

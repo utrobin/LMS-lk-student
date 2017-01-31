@@ -5,7 +5,7 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import Keyboard from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import Avatar from 'material-ui/Avatar';
-import { colors } from '../total/global/globalCSS';
+import { colors } from '../../total/global/globalCSS';
 
 import styles from './Header.css';
 

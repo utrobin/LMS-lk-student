@@ -1,0 +1,70 @@
+:root {
+    --white: #FAFAFA;
+    --grey: #F5F5F5;
+    --greyHover: rgba(153, 153, 153, 0.2);
+    --black: #212121;
+
+    --icon: #FFFFFF;
+    --textColor: #000;
+    --secondText: rgba(0, 0, 0, 0.54);
+    --thirdText: rgb(117, 117, 117);
+    --alternateTextColor: rgba(255, 255, 255, 1);
+    --linkText: #4078c0;
+    --primaryColor: rgb(0, 188, 212);
+    --success: #1B5E20;
+    --captain: #FBC02D;
+    --warning: #FF9800;
+    --error: rgb(255, 64, 129);
+
+    --sizeHeader: 79px;
+}
+html {
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    font-size: 15px;
+    line-height: 24px;
+    background-color: var(--grey);
+}
+h2 {
+     font-size: 19px;
+     line-height: 25px;
+}
+h3 {
+    font-size: 16px;
+    line-height: 24px;
+}
+h4 {
+    font-size: 12.5px;
+    line-height: 18px;
+}
+a {
+    color: var(--linkText);
+}
+a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.content {
+    margin: auto;
+    width: 1076px;
+    padding: 0 15px;
+}
+.more {
+    margin-top: 15px;
+    margin-left: 165px;
+    display: block;
+}
+.plugHeader {
+    height: 64px;
+    margin-bottom: 15px;
+}
+.plugLeftMenu {
+    width: 200px;
+    float: left;
+    display: block;
+    margin-top: -8px;
+    height: 600px;
+}

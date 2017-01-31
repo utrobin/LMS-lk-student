@@ -1,0 +1,23 @@
+.homeworks {
+    display: flex;
+    padding-left: 15px;
+    position: relative;
+}
+.content {
+    padding: 15px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 50px;
+}
+.radio {
+    display: flex;
+    justify-content: space-around;
+}
+.tabs {
+    margin-top: 54px;
+}
+.wrapperRadio {
+    position: absolute;
+    width: 801px;
+    top: 63px;
+}

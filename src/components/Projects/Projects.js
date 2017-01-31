@@ -5,7 +5,7 @@ import Divider from 'material-ui/Divider';
 import Comment from 'material-ui/svg-icons/communication/comment';
 import Plus from 'material-ui/svg-icons/image/exposure-plus-1';
 import Visibility from 'material-ui/svg-icons/action/visibility';
-import { colors } from '../total/global/globalCSS';
+import { colors } from '../../total/global/globalCSS';
 
 import styles from './Projects.css';
 
