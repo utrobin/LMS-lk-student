@@ -9,8 +9,9 @@ import Projects from '../../components/Projects/Projects';
 
 import styles from './MyPage.css';
 
-const MyPage = () => (
+const MyPage = ({ state }) => (
     <div className={ styles.myPage }>
+      { console.log(state) }
       <div className={ styles.main }>
         <Info />
         <Training />
