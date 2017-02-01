@@ -7,8 +7,7 @@ var fs = require('fs');
 module.exports = {
   entry: './src/index.js',
 
-
-  devtool: 'cheap-module-eval-source-map',
+  devtool: '#cheap-module-source-map',
 
   output: {
     path: "./src/built",
@@ -21,9 +20,14 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        plugins: ['transform-runtime'],
         loader: 'babel-loader',
-        query: {presets: ['es2015', 'react', 'stage-2']}
+        query: {
+          presets: ['es2015', 'react', 'stage-2'],
+          plugins: [
+            ["transform-runtime"],
+            ["transform-regenerator"]
+          ],
+        }
       },
       { test: /\.css$/,
         loader: ExtractTextPlugin.extract(

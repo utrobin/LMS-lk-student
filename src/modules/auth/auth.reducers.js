@@ -1,4 +1,4 @@
-export const auth  = (state = false, action) => {
+export const auth  = (state = {}, action) => {
   switch (action.type) {
     case 'RESET_AUTH':
       return false;

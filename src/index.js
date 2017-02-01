@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import store from './modules/index/index';
 
 import TemplateWithLeftMenu from './templates/TemplateWithLeftMenu';

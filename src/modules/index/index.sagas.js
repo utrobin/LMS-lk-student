@@ -16,5 +16,5 @@ function* fetchUser() {
 }
 
 export default function* rootSaga() {
-  yield fork(fetchUser);
+  yield fork(fetchUser)
 }
