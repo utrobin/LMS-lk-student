@@ -42,6 +42,7 @@ h4 {
 }
 a {
     color: var(--linkText);
+    text-decoration: none;
 }
 a:hover {
     text-decoration: underline;

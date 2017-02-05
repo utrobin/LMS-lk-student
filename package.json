@@ -17,6 +17,8 @@
   "author": "Utrobin",
   "dependencies": {
     "body-parser": "^1.16.0",
+    "es6-promise": "^4.0.5",
+    "isomorphic-fetch": "^2.2.1",
     "style-loader": "^0.12.4"
   },
   "devDependencies": {

@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import { auth } from '../auth/auth.reducers';
+import { profile } from '../profile/profile.reducers';
+import { friends } from '../friends/friends.reducers';
 
 const rootReducer = combineReducers({
-  auth,
+  profile,
+  friends
 });
 
 export default rootReducer;

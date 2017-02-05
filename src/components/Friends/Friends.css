@@ -31,6 +31,9 @@
     line-height: 13px;
     margin-top: 3px;
 }
+.link:hover {
+    text-decoration: underline;
+}
 .profile {
     margin-top: 10px;
 }

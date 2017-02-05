@@ -32,7 +32,7 @@ const App = () => (
   </Provider>
 );
 
-render(
+render (
   <App />,
   document.querySelector('.app')
 );

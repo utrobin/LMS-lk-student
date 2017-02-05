@@ -1,20 +1,10 @@
-import { call, put, takeEvery, takeLatest, fork } from 'redux-saga/effects'
-import { actionAuth } from '../auth/auth.actions';
-
-export function isAuth() {
-  return new Promise( (resolve, reject) =>
-    setTimeout(() => {
-      resolve(true)
-    }, 1000)
-  )
-}
-
-// worker Saga: will be fired on USER_FETCH_REQUESTED actions
-function* fetchUser() {
-  const auth = yield call(isAuth);
-  yield put(actionAuth(auth));
-}
+import { call, put, takeEvery, takeLatest, fork, take } from 'redux-saga/effects'
+import { FETCH_PROFILE_START } from '../profile/profile.constants';
+import { FETCH_FRIENDS_START } from '../friends/friends.constants';
+import { fetchUser } from '../profile/profile.sagas';
+import { fetchFriends } from '../friends/friends.sagas';
 
 export default function* rootSaga() {
-  yield fork(fetchUser)
+  yield takeEvery(FETCH_FRIENDS_START, fetchFriends);
+  yield takeEvery(FETCH_PROFILE_START, fetchUser);
 }
