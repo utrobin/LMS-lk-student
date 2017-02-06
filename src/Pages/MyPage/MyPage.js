@@ -6,9 +6,11 @@ import Friends from '../../components/Friends/Friends';
 import Skills from '../../components/Skills/Skills';
 import Education from '../../components/Education/Education';
 import Projects from '../../components/Projects/Projects';
+import CircularProgress from 'material-ui/CircularProgress';
 import { FETCH_PROFILE_START } from '../../modules/profile/profile.constants';
 import { FETCH_FRIENDS_START } from '../../modules/friends/friends.constants';
 import { FETCH_PROJECTS_START } from '../../modules/projects/projects.constants';
+import { FETCH_SKILLS_START } from '../../modules/skills/skills.constants';
 import { connect } from 'react-redux';
 
 import styles from './MyPage.css';
@@ -19,20 +21,25 @@ class MyPage extends React.Component {
     this.props.getProfile();
     this.props.getFriends();
     this.props.getProjects();
+    this.props.getSkills();
   }
 
   render() {
     const loadingProfile  = this.props.profile.loading.value;
     const loadingFriends  = this.props.friends.loading.value;
     const loadingProjects  = this.props.projects.loading.value;
+    const loadingSkills  = this.props.skills.loading.value;
 
     const profile = this.props.profile.info.value;
     const friends = this.props.friends.data.value;
     const projects = this.props.projects.data.value;
+    const skills = this.props.skills.data.value;
 
-    if (loadingProfile || loadingFriends || loadingProjects) {
+    if (loadingProfile || loadingFriends || loadingProjects || loadingSkills) {
       return (
-        <div>Загрузка</div>
+        <div className={ styles.loading }>
+          <CircularProgress size={60} thickness={7} />
+        </div>
       )
     }
 
@@ -42,11 +49,15 @@ class MyPage extends React.Component {
           { console.log(this.props) }
           <Info
             info={ profile.info }
+            myPage={ profile.info.myPage }
           />
           <Education
             education={ profile.education }
           />
-          <Skills />
+          <Skills
+            data={ skills }
+            myPage={ profile.info.myPage }
+          />
           <h3 className={ styles.h3 }>Проекты</h3>
           <Projects
             data={ projects }
@@ -74,6 +85,7 @@ const mapStateToProps = state => {
     profile: state.profile,
     friends: state.friends,
     projects: state.projects,
+    skills: state.skills
   }
 };
 
@@ -87,6 +99,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     getProjects: () => {
       dispatch({ type: FETCH_PROJECTS_START })
+    },
+    getSkills: () => {
+      dispatch({ type: FETCH_SKILLS_START })
     }
   }
 };

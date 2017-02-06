@@ -5,6 +5,9 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import AutoComplete from 'material-ui/AutoComplete';
+import CircularProgress from 'material-ui/CircularProgress';
+import { FETCH_PROJECTS_START } from '../../modules/projects/projects.constants';
+import { connect } from 'react-redux';
 
 import styles from './Projects.css';
 
@@ -14,7 +17,7 @@ const dataSource = [
   'Клевый проект'
 ];
 
-export default class Projects extends React.Component {
+class Projects extends React.Component {
   constructor () {
     super();
 
@@ -27,16 +30,34 @@ export default class Projects extends React.Component {
     };
   }
 
+  componentDidMount () {
+    this.props.getProjects();
+  }
+
   handleChange = (event, index, value) => {
     this.setState({value});
     console.log(event, index, value)
   };
 
   render() {
+    const loadingProjects  = this.props.projects.loading.value;
+
+    const projects = this.props.projects.data.value;
+
+    if (loadingProjects) {
+      return (
+        <div className={ styles.loading }>
+          <CircularProgress size={60} thickness={7} />
+        </div>
+      )
+    }
+
     return (
       <div className={ styles.Projects }>
         <div className={ styles.main }>
-          <Project />
+          <Project
+            data={ projects }
+          />
           <div className={ styles.pagination }>
             <RaisedButton label="Загрузить ещё" primary={true} />
           </div>
@@ -127,3 +148,19 @@ export default class Projects extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    projects: state.projects,
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getProjects: () => {
+      dispatch({ type: FETCH_PROJECTS_START })
+    }
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Projects)

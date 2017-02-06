@@ -30,16 +30,8 @@
     float: left;
     margin-right: 6px!important;
 }
-.peoples {
-    float: right;
-    height: 33px;
-}
 .divider {
     padding-top: 16px;
-}
-.avatar {
-    margin-left: 3px;
-    cursor: pointer;
 }
 .avatar:first-child {
     margin-left: 6px;

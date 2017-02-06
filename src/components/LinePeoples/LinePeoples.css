@@ -1,0 +1,8 @@
+.peoples {
+    float: right;
+    height: 33px;
+}
+.avatar {
+    margin-left: 6px;
+    cursor: pointer;
+}

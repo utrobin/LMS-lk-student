@@ -14,3 +14,7 @@
     line-height: 16px;
     color: var(--secondText);
 }
+.loading {
+    text-align: center;
+    padding-top: 50px;
+}

@@ -310,65 +310,86 @@ app.post('/api/get/projects', (req, res) => {
 });
 
 app.post('/api/get/skills', (req, res) => {
+  const data = {
+    data: [
+      {
+        value: 'JavaScript',
+        count: 5,
+        id: 0,
+        peoples: [
+          {
+            img: 'static/img/1.jpg',
+            id: '0',
+          }, {
+            img: 'static/img/2.jpg',
+            id: '1',
+          }, {
+            img: 'static/img/3.jpg',
+            id: '2',
+          }, {
+            img: 'static/img/1.jpg',
+            id: '3',
+          }, {
+            img: 'static/img/2.jpg',
+            id: '4',
+          }
+        ]
+      }, {
+        value: 'Linux',
+        count: 3,
+        id: 1,
+        peoples: [
+          {
+            img: 'static/img/1.jpg',
+            id: '0',
+          }, {
+            img: 'static/img/2.jpg',
+            id: '1',
+          }, {
+            img: 'static/img/3.jpg',
+            id: '2',
+          }
+        ]
+      }, {
+        value: 'C/C++',
+        count: 4,
+        id: 2,
+        peoples: [
+          {
+            img: 'static/img/1.jpg',
+            id: '0',
+          }, {
+            img: 'static/img/2.jpg',
+            id: '1',
+          }, {
+            img: 'static/img/3.jpg',
+            id: '2',
+          }, {
+            img: 'static/img/1.jpg',
+            id: '3',
+          }
+        ]
+      }
+    ],
+    dictionarySkills: [
+      'JavaScript',
+      'C/C++',
+      'Python',
+      'SQL',
+      'React'
+    ]
+  };
+
+  res.send(data);
+});
+
+app.post('/api/get/dictionaryskills', (req, res) => {
   const data = [
-    {
-      value: 'JavaScript',
-      count: 5,
-      id: 0,
-      peoples: [
-        {
-          img: 'static/img/1.jpg',
-          id: '0',
-        }, {
-          img: 'static/img/2.jpg',
-          id: '1',
-        }, {
-          img: 'static/img/3.jpg',
-          id: '2',
-        }, {
-          img: 'static/img/1.jpg',
-          id: '3',
-        }, {
-          img: 'static/img/2.jpg',
-          id: '4',
-        }
-      ]
-    }, {
-      value: 'Linux',
-      count: 3,
-      id: 1,
-      peoples: [
-        {
-          img: 'static/img/1.jpg',
-          id: '0',
-        }, {
-          img: 'static/img/2.jpg',
-          id: '1',
-        }, {
-          img: 'static/img/3.jpg',
-          id: '2',
-        }
-      ]
-    }, {
-      value: 'C/C++',
-      count: 4,
-      id: 2,
-      peoples: [
-        {
-          img: 'static/img/1.jpg',
-          id: '0',
-        }, {
-          img: 'static/img/2.jpg',
-          id: '1',
-        }, {
-          img: 'static/img/3.jpg',
-          id: '2',
-        }, {
-          img: 'static/img/1.jpg',
-          id: '3',
-        }
-      ]
-    },
+    'JavaScript',
+    'C/C++',
+    'Python',
+    'SQL',
+    'React'
   ];
 
   res.send(data);

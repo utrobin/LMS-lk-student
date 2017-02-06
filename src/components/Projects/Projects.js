@@ -40,7 +40,6 @@ const Tags = ({ tags }) => (
 
 const Projects = ({ data }) => (
   <div className={ styles.projects }>
-    { console.log( data ) }
     {
       data.map((el, i) =>
         <Paper zDepth={1} className={ styles.project } key={ i }>
