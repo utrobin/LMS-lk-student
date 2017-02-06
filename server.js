@@ -188,30 +188,187 @@ app.post('/api/get/friends', (req, res) => {
 app.post('/api/get/projects', (req, res) => {
   const data = [
     {
-      img: 'static/img/1.jpg',
-      id: '0',
-      name: 'Денис'
+      img: 'static/img/project.png',
+      github: null,
+      title: 'Technoshooter (3D игра шутер)',
+      descreption: {
+        label: 'Проект на 2 семестр по предметам:',
+        subjects: [
+          'Фронтенд',
+          'Углубленное программирование на Java',
+          'Проектирование интерфейсов'
+        ]
+      },
+      tags: [
+        {
+          value: 'React',
+          link: '#'
+        }, {
+          value: 'Materia design',
+          link: '#'
+        }, {
+          value: 'Spring',
+          link: '#'
+        }, {
+          value: '3D',
+          link: '#'
+        }, {
+          value: 'Шутер',
+          link: '#'
+        }
+      ],
+      status: {
+        value: 'проект закончен',
+        site: 'javajava.ru',
+        link: '#'
+      },
+      views: 345,
+      like: 21,
+      comments: 7,
+      team: [
+        {
+          img: 'static/img/1.jpg',
+          id: '0',
+          name: 'Денис',
+        }, {
+          img: 'static/img/2.jpg',
+          id: '1',
+          name: 'Илья',
+          mentor: true
+        }, {
+          img: 'static/img/3.jpg',
+          id: '2',
+          name: 'Сергей'
+        }, {
+          img: 'static/img/1.jpg',
+          id: '0',
+          name: 'Денис'
+        }
+      ]
     }, {
-      img: 'static/img/2.jpg',
-      id: '1',
-      name: 'Илья'
-    }, {
-      img: 'static/img/3.jpg',
-      id: '2',
-      name: 'Сергей'
-    }, {
-      img: 'static/img/1.jpg',
-      id: '0',
-      name: 'Денис'
-    }, {
-      img: 'static/img/2.jpg',
-      id: '1',
-      name: 'Илья'
-    }, {
-      img: 'static/img/3.jpg',
-      id: '2',
-      name: 'Сергей'
+      img: 'static/img/project.png',
+      github: '#',
+      title: 'Technoshooter (3D игра шутер)',
+      descreption: {
+        label: 'Проект на 2 семестр по предметам:',
+        subjects: [
+          'Фронтенд',
+          'Углубленное программирование на Java',
+          'Проектирование интерфейсов'
+        ]
+      },
+      tags: [
+        {
+          value: 'React',
+          link: '#'
+        }, {
+          value: 'Materia design',
+          link: '#'
+        }, {
+          value: 'Spring',
+          link: '#'
+        }, {
+          value: '3D',
+          link: '#'
+        }, {
+          value: 'Шутер',
+          link: '#'
+        }
+      ],
+      status: {
+        value: 'проект закончен',
+        site: null,
+        link: '#'
+      },
+      views: 345,
+      like: 21,
+      comments: 7,
+      team: [
+        {
+          img: 'static/img/1.jpg',
+          id: '0',
+          name: 'Денис',
+        }, {
+          img: 'static/img/2.jpg',
+          id: '1',
+          name: 'Илья',
+          mentor: true
+        }, {
+          img: 'static/img/3.jpg',
+          id: '2',
+          name: 'Сергей'
+        }, {
+          img: 'static/img/1.jpg',
+          id: '0',
+          name: 'Денис'
+        }
+      ]
     }
+  ];
+
+  res.send(data);
+});
+
+app.post('/api/get/skills', (req, res) => {
+  const data = [
+    {
+      value: 'JavaScript',
+      count: 5,
+      id: 0,
+      peoples: [
+        {
+          img: 'static/img/1.jpg',
+          id: '0',
+        }, {
+          img: 'static/img/2.jpg',
+          id: '1',
+        }, {
+          img: 'static/img/3.jpg',
+          id: '2',
+        }, {
+          img: 'static/img/1.jpg',
+          id: '3',
+        }, {
+          img: 'static/img/2.jpg',
+          id: '4',
+        }
+      ]
+    }, {
+      value: 'Linux',
+      count: 3,
+      id: 1,
+      peoples: [
+        {
+          img: 'static/img/1.jpg',
+          id: '0',
+        }, {
+          img: 'static/img/2.jpg',
+          id: '1',
+        }, {
+          img: 'static/img/3.jpg',
+          id: '2',
+        }
+      ]
+    }, {
+      value: 'C/C++',
+      count: 4,
+      id: 2,
+      peoples: [
+        {
+          img: 'static/img/1.jpg',
+          id: '0',
+        }, {
+          img: 'static/img/2.jpg',
+          id: '1',
+        }, {
+          img: 'static/img/3.jpg',
+          id: '2',
+        }, {
+          img: 'static/img/1.jpg',
+          id: '3',
+        }
+      ]
+    },
   ];
 
   res.send(data);

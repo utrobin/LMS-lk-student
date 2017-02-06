@@ -8,6 +8,7 @@ import Education from '../../components/Education/Education';
 import Projects from '../../components/Projects/Projects';
 import { FETCH_PROFILE_START } from '../../modules/profile/profile.constants';
 import { FETCH_FRIENDS_START } from '../../modules/friends/friends.constants';
+import { FETCH_PROJECTS_START } from '../../modules/projects/projects.constants';
 import { connect } from 'react-redux';
 
 import styles from './MyPage.css';
@@ -17,16 +18,19 @@ class MyPage extends React.Component {
   componentDidMount () {
     this.props.getProfile();
     this.props.getFriends();
+    this.props.getProjects();
   }
 
   render() {
     const loadingProfile  = this.props.profile.loading.value;
     const loadingFriends  = this.props.friends.loading.value;
+    const loadingProjects  = this.props.projects.loading.value;
 
     const profile = this.props.profile.info.value;
     const friends = this.props.friends.data.value;
+    const projects = this.props.projects.data.value;
 
-    if (loadingProfile || loadingFriends) {
+    if (loadingProfile || loadingFriends || loadingProjects) {
       return (
         <div>Загрузка</div>
       )
@@ -44,7 +48,9 @@ class MyPage extends React.Component {
           />
           <Skills />
           <h3 className={ styles.h3 }>Проекты</h3>
-          <Projects />
+          <Projects
+            data={ projects }
+          />
         </div>
         <div className={ styles.rightBlock }>
           <Avatar
@@ -66,7 +72,8 @@ class MyPage extends React.Component {
 const mapStateToProps = state => {
   return {
     profile: state.profile,
-    friends: state.friends
+    friends: state.friends,
+    projects: state.projects,
   }
 };
 
@@ -76,7 +83,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({ type: FETCH_PROFILE_START })
     },
     getFriends: () => {
-      dispatch({ type: FETCH_FRIENDS_START  })
+      dispatch({ type: FETCH_FRIENDS_START })
+    },
+    getProjects: () => {
+      dispatch({ type: FETCH_PROJECTS_START })
     }
   }
 };
