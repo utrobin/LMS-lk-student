@@ -2,11 +2,13 @@ let express = require('express');
 let parser = require('body-parser');
 let app = express();
 
+app.use(parser.json());
+
 app.post('/api/get/profile', (req, res) => {
   const data = {
 
     info: {
-      myPage: false,
+      myPage: true,
       name: 'Егор Утробин', // полное имя студента
       standing: 'Cтудент',  // категория пользователя
       group: [
@@ -312,6 +314,11 @@ app.post('/api/get/projects', (req, res) => {
   res.send(data);
 });
 
+app.post('/api/delete/skills', (req, res) => {
+  console.log(req.body, req.params, req.query);
+  res.send({ ok: 'ok' });
+});
+
 app.post('/api/get/skills', (req, res) => {
   const data = {
     data: [
@@ -372,6 +379,11 @@ app.post('/api/get/skills', (req, res) => {
             id: '3',
           }
         ]
+      }, {
+        value: 'Новый навык',
+        count: 0,
+        id: 3,
+        peoples: []
       }
     ],
     dictionarySkills: [
@@ -404,7 +416,7 @@ app.post('/api/get/dictionaryskills', (req, res) => {
 //2 - Ожидает проверки
 //3 - В доработке
 //4 - Сдано
-//5 - Прсроченно
+//5 - Просроченно
 
 app.post('/api/get/homework', (req, res) => {
   const data = {
@@ -448,6 +460,34 @@ app.post('/api/get/homework', (req, res) => {
         status: 5,
         points: {
           received: 0,
+          maximum: 15
+        },
+        views: 345,
+        like: 21,
+        comments: 7,
+      }, {
+        title: 'Материалы для разработки проекта',
+        discipline: 'Web-технологии (первый семестр)',
+        text: `
+          <p>
+          Методичка по настройке nginx: <a>https://docs.google.com/document/d/1BuH_QTZtfgXVor_z9ANRb15Oxd-YrBkeMCNzldhCzGo/edit</a>
+          </p>
+          <p>
+            Django first steps: <a>http://djbook.ru/rel1.9/intro/tutorial01.html</a> <a>http://djbook.ru/rel1.9/intro/tutorial02.html</a> <a>http://djbook.ru/rel1.9/intro/tutorial03.html http://djbook.ru/rel1.9/intro/tutorial04.html</a>
+          (дальнейший шаги не нужны)
+          </p>
+          <p>
+            Если у вас возникают трудности с использованием Python, потратьте часа 4-6, пройдите туториалы по самому языку: <a>https://www.google.ru/search?q=python+quick+start&oq=python+quick+start&aqs=chrome..69i57j0l5.2980j0j7&client=ubuntu&sourceid=chrome&ie=UTF-8</a>
+          </p>
+        `,
+        dedline: '14 января 2016 г.',
+        author: {
+          img: 'static/img/smal.jpg',
+          name: 'Дмитрий Смаль'
+        },
+        status: 1,
+        points: {
+          received: 15,
           maximum: 15
         },
         views: 345,

@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import {reducer as toastrReducer} from 'react-redux-toastr';
 import { profile } from '../profile/profile.reducers';
 import { friends } from '../friends/friends.reducers';
 import { projects } from '../projects/projects.reducers';
@@ -10,7 +11,8 @@ const rootReducer = combineReducers({
   friends,
   projects,
   skills,
-  homework
+  homework,
+  toastr: toastrReducer
 });
 
 export default rootReducer;

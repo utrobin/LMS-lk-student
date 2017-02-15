@@ -4,7 +4,7 @@ import { callApi } from '../../service/service';
 
 export function* fetchHomework() {
   yield put(loading(true));
-  const { responce, data } = yield call(callApi, '/api/get/homework');
+  const { responce, data } = yield call(callApi, { url: '/api/get/homework' });
   if (responce) {
     yield put(getHomework(data));
     yield put(loading(false));

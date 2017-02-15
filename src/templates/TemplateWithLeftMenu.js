@@ -1,12 +1,17 @@
 import React from 'react';
 
+import { toastr } from 'react-redux-toastr'
+import ReduxToastr from 'react-redux-toastr'
 import Header from '../components/Header/Header';
 import LeftMenu from '../components/LeftMenu/LeftMenu';
 
 import '../total/reset/reset.css';
 import styles from '../total/global/global.css';
+import 'react-redux-toastr/src/styles/index.scss'
 
 export default class TemplateWithLeftMenu extends React.Component {
+
+
   render() {
     return (
       <div>
@@ -19,6 +24,15 @@ export default class TemplateWithLeftMenu extends React.Component {
           <div className={ styles.plugLeftMenu }/>
           { this.props.children }
         </div>
+        <ReduxToastr
+          timeOut={3000}
+          newestOnTop={false}
+          preventDuplicates={true}
+          position="top-right"
+          transitionIn="fadeIn"
+          transitionOut="fadeOut"
+          progressBar
+        />
       </div>
     )
   }

@@ -7,7 +7,7 @@ import store from './modules/index/index';
 
 import TemplateWithLeftMenu from './templates/TemplateWithLeftMenu';
 import MyPage from './Pages/MyPage/MyPage';
-import Homeworks from './Pages/Homework/Homeworks';
+import Homeworks from './Pages/Homework/Homework';
 import ChatHomework from './Pages/ChatHomework/ChatHomework';
 import Performance from './Pages/Performance/Performance';
 import Projects from './Pages/Projects/Projects';

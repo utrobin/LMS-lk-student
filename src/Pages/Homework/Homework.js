@@ -1,12 +1,13 @@
 import React from 'react';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import { Tabs, Tab } from 'material-ui/Tabs';
+import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import Homework from '../../components/Homework/Homework';
 import { colors } from '../../total/global/globalCSS';
 import { FETCH_HOMEWORK_START } from '../../modules/homework/homework.constants';
+import CircularProgress from 'material-ui/CircularProgress';
 import { connect } from 'react-redux';
 
-import styles from './Homeworks.css'
+import styles from './Homework.css'
 
 const stylesJS = {
   radio: {
@@ -25,10 +26,21 @@ class Homeworks extends React.Component {
   }
 
   render() {
+    const loadingHomework  = this.props.homework.loading.value;
+
+    const data = this.props.homework.data.value;
+
+    if (loadingHomework) {
+      return (
+        <div className={ styles.loading }>
+          <CircularProgress size={60} thickness={7} />
+        </div>
+      )
+    }
 
     return (
       <div className={ styles.homeworks }>
-        { console.log(this.props) }
+        { console.log(data.homework) }
         <div className={ styles.wrapperRadio }>
           <RadioButtonGroup name="shipSpeed" defaultSelected="uncompleted" className={ styles.radio }>
             <RadioButton
@@ -53,21 +65,19 @@ class Homeworks extends React.Component {
         </div>
         <Tabs contentContainerClassName={ styles.tabs }>
           <Tab label="Все предметы" >
-            <Homework />
+            <Homework
+              data={ data.homework }
+            />
           </Tab>
-          <Tab label="АИСД" >
-            <Homework />
-          </Tab>
-          <Tab
-            label="WEB-технологии"
-          >
-            <Homework />
-          </Tab>
-          <Tab
-            label="С/С++"
-          >
-            <Homework />
-          </Tab>
+          {
+            data.discipline.map((el, i) =>
+              <Tab label={ el } key={ i }>
+                <Homework
+                  data={ data.homework }
+                />
+              </Tab>
+            )
+          }
         </Tabs>
       </div>
     )
