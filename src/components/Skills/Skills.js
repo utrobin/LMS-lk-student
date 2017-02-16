@@ -10,7 +10,8 @@ import { FETCH_SKILLS_START } from '../../modules/skills/skills.constants';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { connect } from 'react-redux';
-import { deleteSkillFetch } from '../../modules/skills/skills.actions';
+import { deleteSkillFetch, addSkillFetch } from '../../modules/skills/skills.actions';
+import { toastr } from 'react-redux-toastr'
 
 import styles from './Skills.css';
 
@@ -21,23 +22,55 @@ class Skills extends React.Component {
 
     this.state = {
       open: false,
-      idRemoval: undefined
+      value: undefined
     };
   }
 
-  handleOpen(id) {
+  getFormData() {
+    const elements = this.form.elements;
+    const fields = {};
+
+    Object.keys(elements).forEach((element) => {
+      const name = elements[element].name;
+      const value = elements[element].value;
+
+      if (!name) {
+        return;
+      }
+
+      fields[name] = value;
+    });
+
+    return fields;
+  }
+
+  clearFormData() {
+    const elements = this.form.elements;
+
+    Object.keys(elements).forEach((element) => {
+      const name = elements[element].name;
+
+      if (!name) {
+        return;
+      }
+
+     elements[element].value = '';
+    });
+  }
+
+  handleOpen(value) {
     this.setState({
       open: true,
-      idRemoval: id
+      value
     });
   };
 
   handleClose = () => {
-    this.setState({open: false});
+    this.setState({ open: false });
   };
 
   deleteSkill = () => {
-    this.props.deleteSkill(this.state.idRemoval);
+    this.props.deleteSkill(this.state.value);
     this.handleClose();
   };
 
@@ -45,14 +78,41 @@ class Skills extends React.Component {
     this.props.getSkills();
   }
 
+  formSubmit = e => {
+    e.preventDefault();
+
+    const formData = this.getFormData();
+
+    const replays = this.props.skills.data.value.data.every(el => {
+      return el.value !== formData.skill
+    });
+
+    if (formData.skill === '') {
+      return;
+    }
+
+    if (replays) {
+      if(this.props.myPage) {
+        const temp = Object.assign({}, formData);
+        this.props.addSkill(temp);
+      } else {
+        const temp = Object.assign({}, formData, { count: 1, peoples: [{ img: this.props.auth.data.value.img, id: this.props.auth.data.value.id }] });
+        this.props.addSkill(temp);
+      }
+    } else {
+      toastr.error('Ошибка', 'Данный навык уже существует');
+    }
+  };
+
   updateInput(event) {
     console.log(event)
   }
 
   render() {
     const loadingSkills  = this.props.skills.loading.value;
+    const loadingAuth  = this.props.auth.loading.value;
 
-    if (loadingSkills) {
+    if (loadingSkills || loadingAuth) {
       return (
         <Paper className={ styles.skills } zDepth={1} >
           <span className={ styles.span }>Навыки:</span>
@@ -89,7 +149,7 @@ class Skills extends React.Component {
               <div className={ styles.skill } key={ i }>
                 <Chip
                   className={ styles.chip }
-                  onRequestDelete={ myPage === true ? this.handleOpen.bind(this, el.id) : undefined }
+                  onRequestDelete={ myPage === true ? this.handleOpen.bind(this, el.value) : undefined }
                 >
                   <i className={ styles.i }>{ el.count }</i>
                   <span>{ el.value }</span>
@@ -102,20 +162,22 @@ class Skills extends React.Component {
             )
           }
         </div>
-        <form onSubmit={(e) => e.preventDefault() }>
+        <form onSubmit={ this.formSubmit }  ref={ form => this.form = form }>
           <AutoComplete
             floatingLabelText="Навык"
             filter={ AutoComplete.noFilter }
             openOnFocus={ true }
             dataSource={ data.dictionarySkills }
             onUpdateInput={ (e) => this.updateInput(e) }
+            name="skill"
           />
-          <div className={ styles.button }>
+          <div className={ styles.button } >
             <RaisedButton
               type="submit"
               label="Добавить навык"
               primary={true}
               fullWidth={true}
+              onTouchTap={ this.formSubmit }
             />
           </div>
         </form>
@@ -135,7 +197,8 @@ class Skills extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    skills: state.skills
+    skills: state.skills,
+    auth: state.auth
   }
 };
 
@@ -146,6 +209,9 @@ const mapDispatchToProps = dispatch => {
     },
     deleteSkill: id => {
       dispatch(deleteSkillFetch(id))
+    },
+    addSkill: data => {
+      dispatch(addSkillFetch(data))
     }
   }
 };

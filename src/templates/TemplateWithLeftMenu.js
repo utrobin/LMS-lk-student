@@ -1,6 +1,4 @@
 import React from 'react';
-
-import { toastr } from 'react-redux-toastr'
 import ReduxToastr from 'react-redux-toastr'
 import Header from '../components/Header/Header';
 import LeftMenu from '../components/LeftMenu/LeftMenu';

@@ -40,7 +40,7 @@ class Homeworks extends React.Component {
 
     return (
       <div className={ styles.homeworks }>
-        { console.log(data.homework) }
+        { console.log(data) }
         <div className={ styles.wrapperRadio }>
           <RadioButtonGroup name="shipSpeed" defaultSelected="uncompleted" className={ styles.radio }>
             <RadioButton

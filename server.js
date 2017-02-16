@@ -314,7 +314,21 @@ app.post('/api/get/projects', (req, res) => {
   res.send(data);
 });
 
-app.post('/api/delete/skills', (req, res) => {
+app.post('/api/auth', (req, res) => {
+  const data = {
+    id: 3,
+    img: 'static/img/avatar.jpg',
+  };
+
+  res.send(data);
+});
+
+app.post('/api/delete/skill', (req, res) => {
+  console.log(req.body, req.params, req.query);
+  res.send({ ok: 'ok' });
+});
+
+app.post('/api/add/skill', (req, res) => {
   console.log(req.body, req.params, req.query);
   res.send({ ok: 'ok' });
 });
@@ -419,6 +433,8 @@ app.post('/api/get/dictionaryskills', (req, res) => {
 //5 - Просроченно
 
 app.post('/api/get/homework', (req, res) => {
+  console.log(req.body, req.params, req.query);
+
   const data = {
     discipline: [
       'АИСД',

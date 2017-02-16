@@ -5,6 +5,7 @@ import { friends } from '../friends/friends.reducers';
 import { projects } from '../projects/projects.reducers';
 import { skills } from '../skills/skills.reducers';
 import { homework } from '../homework/homework.reducers';
+import { auth } from '../auth/auth.reducers';
 
 const rootReducer = combineReducers({
   profile,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   projects,
   skills,
   homework,
+  auth,
   toastr: toastrReducer
 });
 
