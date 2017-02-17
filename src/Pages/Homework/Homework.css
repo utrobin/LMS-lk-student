@@ -18,10 +18,13 @@
 }
 .wrapperRadio {
     position: absolute;
-    width: 801px;
+    width: 861px;
     top: 63px;
 }
 .loading {
     text-align: center;
     padding-top: 50px;
+}
+.tabWrapper {
+    width: 100%;
 }

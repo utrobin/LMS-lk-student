@@ -7,6 +7,7 @@ import Avatar from 'material-ui/Avatar';
 import Visibility from 'material-ui/svg-icons/action/visibility';
 import RaisedButton from 'material-ui/RaisedButton';
 import { browserHistory } from 'react-router';
+import CircularProgress from 'material-ui/CircularProgress';
 import RoutesMap from '../../RoutesMap/RoutesMap';
 import { colors } from '../../total/global/globalCSS';
 
@@ -61,6 +62,14 @@ class Homework extends React.Component {
 
   render() {
     const data = this.props.data;
+
+    if (this.props.loading) {
+      return (
+        <div className={ styles.loading }>
+          <CircularProgress size={60} thickness={7} />
+        </div>
+      )
+    }
 
     return(
       <div>

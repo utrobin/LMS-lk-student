@@ -78,3 +78,10 @@
 .button {
     margin-bottom: 10px;
 }
+.loading {
+    text-align: center;
+    padding-top: 50px;
+}
+.homeworkWrapper {
+    width: 100%;
+}

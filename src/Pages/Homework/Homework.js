@@ -5,6 +5,7 @@ import Homework from '../../components/Homework/Homework';
 import { colors } from '../../total/global/globalCSS';
 import { FETCH_HOMEWORK_START } from '../../modules/homework/homework.constants';
 import CircularProgress from 'material-ui/CircularProgress';
+import { updateFilterStart } from '../../modules/homework/homework.actions';
 import { connect } from 'react-redux';
 
 import styles from './Homework.css'
@@ -21,12 +22,21 @@ const stylesJS = {
 
 class Homeworks extends React.Component {
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.getHomework();
   }
 
+  updateFilterStatus = e => {
+    this.props.updateFilter({ status: e.target.value });
+  };
+
+  updateFilterDiscipline = e => {
+    this.props.updateFilter({ discipline: e });
+  };
+
   render() {
     const loadingHomework  = this.props.homework.loading.value;
+    const loadingFilter  = this.props.homework.loadingFilter.value;
 
     const data = this.props.homework.data.value;
 
@@ -42,7 +52,7 @@ class Homeworks extends React.Component {
       <div className={ styles.homeworks }>
         { console.log(data) }
         <div className={ styles.wrapperRadio }>
-          <RadioButtonGroup name="shipSpeed" defaultSelected="uncompleted" className={ styles.radio }>
+          <RadioButtonGroup name="shipSpeed" defaultSelected="uncompleted" onChange={ this.updateFilterStatus } className={ styles.radio }>
             <RadioButton
               value="uncompleted"
               label="Открытые"
@@ -63,16 +73,18 @@ class Homeworks extends React.Component {
             />
           </RadioButtonGroup>
         </div>
-        <Tabs contentContainerClassName={ styles.tabs }>
-          <Tab label="Все предметы" >
+        <Tabs contentContainerClassName={ styles.tabs } onChange={ this.updateFilterDiscipline } className={ styles.tabWrapper }>
+          <Tab label="Все предметы" value='all'>
             <Homework
+              loading={ loadingFilter }
               data={ data.homework }
             />
           </Tab>
           {
             data.discipline.map((el, i) =>
-              <Tab label={ el } key={ i }>
+              <Tab label={ el } key={ i } value={ el }>
                 <Homework
+                  loading={ loadingFilter }
                   data={ data.homework }
                 />
               </Tab>
@@ -90,11 +102,14 @@ const mapStateToProps = state => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     getHomework: () => {
       dispatch({ type: FETCH_HOMEWORK_START })
     },
+    updateFilter: data => {
+      dispatch(updateFilterStart(data))
+    }
   }
 };
 
