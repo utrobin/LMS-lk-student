@@ -1,17 +1,16 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
-import Chip from 'material-ui/Chip';
-import Divider from 'material-ui/Divider';
 import AutoComplete from 'material-ui/AutoComplete';
 import RaisedButton from 'material-ui/RaisedButton';
-import LinePeoples from '../LinePeoples/LinePeoples';
 import CircularProgress from 'material-ui/CircularProgress';
 import { FETCH_SKILLS_START } from '../../modules/skills/skills.constants';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { connect } from 'react-redux';
-import { deleteSkillFetch, addSkillFetch } from '../../modules/skills/skills.actions';
+import Skill from '../Skill/Skill';
+import { deleteSkillFetch, addSkillFetch, addVoiceFetch, deleteVoiceFetch } from '../../modules/skills/skills.actions';
 import { toastr } from 'react-redux-toastr'
+import RoutesMap from '../../RoutesMap/RoutesMap';
 
 import styles from './Skills.css';
 
@@ -30,7 +29,7 @@ class Skills extends React.Component {
     const elements = this.form.elements;
     const fields = {};
 
-    Object.keys(elements).forEach((element) => {
+    Object.keys(elements).forEach(element => {
       const name = elements[element].name;
       const value = elements[element].value;
 
@@ -47,7 +46,7 @@ class Skills extends React.Component {
   clearFormData() {
     const elements = this.form.elements;
 
-    Object.keys(elements).forEach((element) => {
+    Object.keys(elements).forEach(element => {
       const name = elements[element].name;
 
       if (!name) {
@@ -58,7 +57,7 @@ class Skills extends React.Component {
     });
   }
 
-  handleOpen(value) {
+  handleOpen = value => {
     this.setState({
       open: true,
       value
@@ -78,6 +77,18 @@ class Skills extends React.Component {
     this.props.getSkills();
   }
 
+  addVoice = value => {
+    const login = this.props.location.pathname.slice(RoutesMap.profile.length + 1);
+
+    this.props.addVoice({ value, login });
+  };
+
+  deleteVoice = value => {
+    const login = this.props.location.pathname.slice(RoutesMap.profile.length + 1);
+
+    this.props.deleteVoice({ value, login });
+  };
+
   formSubmit = e => {
     e.preventDefault();
 
@@ -93,10 +104,14 @@ class Skills extends React.Component {
 
     if (replays) {
       if(this.props.myPage) {
-        const temp = Object.assign({}, formData);
+        const temp = Object.assign({}, formData, { author: this.props.auth.data.value.login });
         this.props.addSkill(temp);
       } else {
-        const temp = Object.assign({}, formData, { count: 1, peoples: [{ img: this.props.auth.data.value.img, id: this.props.auth.data.value.id }] });
+        const temp = Object.assign({}, formData, {
+          count: 1,
+          author: this.props.auth.data.value.login,
+          peoples: [{ img: this.props.auth.data.value.img, login: this.props.auth.data.value.login }]
+        });
         this.props.addSkill(temp);
       }
     } else {
@@ -146,23 +161,21 @@ class Skills extends React.Component {
         <div>
           {
             data.data.map((el, i) =>
-              <div className={ styles.skill } key={ i }>
-                <Chip
-                  className={ styles.chip }
-                  onRequestDelete={ myPage === true ? this.handleOpen.bind(this, el.value) : undefined }
-                >
-                  <i className={ styles.i }>{ el.count }</i>
-                  <span>{ el.value }</span>
-                </Chip>
-                <LinePeoples
-                  data={ el.peoples }
-                />
-                <div className={ styles.divider }><Divider /></div>
-              </div>
+              <Skill
+                myPage={ myPage }
+                value={ el.value }
+                count={ el.count }
+                peoples={ el.peoples }
+                vote={ el.vote }
+                key={ i }
+                handleOpen={ this.handleOpen }
+                addVoice={ this.addVoice }
+                deleteVoice={ this.deleteVoice }
+              />
             )
           }
         </div>
-        <form onSubmit={ this.formSubmit }  ref={ form => this.form = form }>
+        <form onSubmit={ (e) => { e.preventDefault() } }  ref={ form => this.form = form }>
           <AutoComplete
             floatingLabelText="Навык"
             filter={ AutoComplete.noFilter }
@@ -195,10 +208,11 @@ class Skills extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps, gf) => {
   return {
     skills: state.skills,
-    auth: state.auth
+    auth: state.auth,
+    router: ownProps
   }
 };
 
@@ -212,6 +226,12 @@ const mapDispatchToProps = dispatch => {
     },
     addSkill: data => {
       dispatch(addSkillFetch(data))
+    },
+    addVoice: value => {
+      dispatch(addVoiceFetch(value))
+    },
+    deleteVoice: value => {
+      dispatch(deleteVoiceFetch(value))
     }
   }
 };

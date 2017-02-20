@@ -1,6 +1,8 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import Avatar from 'material-ui/Avatar';
+import RoutesMap from '../../RoutesMap/RoutesMap';
+import { Link } from 'react-router'
 
 import styles from './Friends.css';
 
@@ -14,8 +16,8 @@ const Friends = ({ data }) => (
         {
           data.map((el, i) =>
             <div className={ styles.profile } key={ i }>
-              <a href={ `/profile/${el.id}` }><Avatar size={50} src={ el.img } /></a>
-              <a className={ styles.link } href={ `/profile/${el.id}` }>{ el.name }</a>
+              <Link to={ `${RoutesMap.profile}/${el.login}` }><Avatar size={50} src={ el.img } /></Link>
+              <Link to={ `${RoutesMap.profile}/${el.login}` } className={ styles.link }>{ el.name }</Link>
             </div>
           )
         }

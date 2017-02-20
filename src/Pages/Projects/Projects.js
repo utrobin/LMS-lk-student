@@ -6,7 +6,7 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import AutoComplete from 'material-ui/AutoComplete';
 import CircularProgress from 'material-ui/CircularProgress';
-import { FETCH_PROJECTS_START } from '../../modules/projects/projects.constants';
+import { startGetProjects, startGetFilter, startStartUdpateFilter } from '../../modules/projects/projects.actions';
 import { connect } from 'react-redux';
 
 import styles from './Projects.css';
@@ -17,34 +17,48 @@ const dataSource = [
   'Клевый проект'
 ];
 
-class Projects extends React.Component {
-  constructor () {
-    super();
+const Filter = ({ name, value, activeFilters, handleChange, valueFilters }) => (
+  <SelectField
+    floatingLabelText={ name }
+    value={ activeFilters[value] }
+    onChange={ (event, index, v) => handleChange(value, v) }
+    maxHeight={300}
+    style={{ width: 220 }}
+  >
+    {
+      valueFilters.map((el, i) =>
+        <MenuItem
+          value={ el.value }
+          primaryText={ el.name }
+          key={ i }
+        />
+      )
+    }
+  </SelectField>
+);
 
-    this.state = {
-      value1: 1,
-      value2: 1,
-      value3: 1,
-      value4: 1,
-      value5: 1,
-    };
-  }
+class Projects extends React.Component {
 
   componentDidMount () {
     this.props.getProjects();
+    this.props.getFilters();
   }
 
-  handleChange = (event, index, value) => {
-    this.setState({value});
-    console.log(event, index, value)
+  handleChange = (name, value) => {
+
+    this.props.updateFilters({ [name]: value });
   };
 
   render() {
-    const loadingProjects  = this.props.projects.loading.value;
+    const loadingProjects = this.props.projects.loading.value;
+    const loadingFilters = this.props.projects.loadingFilter.value;
+    const loadingUpdateFilters = this.props.projects.loadingUpdateFilter.value;
 
     const projects = this.props.projects.data.value;
+    const filters = this.props.projects.filters;
+    const activeFilters = this.props.projects.activeFilters;
 
-    if (loadingProjects) {
+    if (loadingProjects || loadingFilters) {
       return (
         <div className={ styles.loading }>
           <CircularProgress size={60} thickness={7} />
@@ -55,12 +69,19 @@ class Projects extends React.Component {
     return (
       <div className={ styles.Projects }>
         <div className={ styles.main }>
-          <Project
-            data={ projects }
-          />
-          <div className={ styles.pagination }>
-            <RaisedButton label="Загрузить ещё" primary={true} />
-          </div>
+          {
+            loadingUpdateFilters === true ?
+              <div className={ styles.loading }>
+                <CircularProgress size={60} thickness={7} />
+              </div>
+              :
+              <Project
+                data={ projects }
+              />
+          }
+          {/*<div className={ styles.pagination }>*/}
+            {/*<RaisedButton label="Загрузить ещё" primary={true} />*/}
+          {/*</div>*/}
         </div>
         <div className={ styles.wrapperRightBlock }>
           <Paper className={ styles.rightBlock }>
@@ -71,73 +92,18 @@ class Projects extends React.Component {
               fullWidth={true}
             />
 
-            <SelectField
-              floatingLabelText="Образовательный проект"
-              value={this.state.value1}
-              onChange={this.handleChange}
-              style={{ width: 220 }}
-            >
-              <MenuItem value={1} primaryText="Все" />
-              <MenuItem value={2} primaryText="Технопарк" />
-              <MenuItem value={3} primaryText="Техносфера" />
-              <MenuItem value={4} primaryText="Технотрэк" />
-              <MenuItem value={5} primaryText="Техноатом" />
-              <MenuItem value={6} primaryText="Технополис" />
-            </SelectField>
-
-            <SelectField
-              floatingLabelText="Курс или предмет"
-              value={this.state.value2}
-              onChange={this.handleChange}
-              style={{ width: 220 }}
-            >
-              <MenuItem value={1} primaryText="Все" />
-              <MenuItem value={2} primaryText="Web-технологии" />
-              <MenuItem value={3} primaryText="АИСД" />
-              <MenuItem value={4} primaryText="Углуб. програм. на C/C++" />
-              <MenuItem value={5} primaryText="Углуб. програм. на Java" />
-              <MenuItem value={6} primaryText="Фронтенд разработка" />
-              <MenuItem value={7} primaryText="Проектирование интерфейсов" />
-              <MenuItem value={8} primaryText="Мобильная разработка" />
-              <MenuItem value={9} primaryText="Выпускной проект" />
-              <MenuItem value={10} primaryText="Linux" />
-              <MenuItem value={11} primaryText="Разработка приложений на iOS" />
-            </SelectField>
-
-            <SelectField
-              floatingLabelText="Статус"
-              value={this.state.value3}
-              onChange={this.handleChange}
-              style={{ width: 220 }}
-            >
-              <MenuItem value={1} primaryText="Не выбран" />
-              <MenuItem value={2} primaryText="В разработке" />
-              <MenuItem value={3} primaryText="Завершенн" />
-              <MenuItem value={4} primaryText="В поиске команды" />
-            </SelectField>
-
-            <SelectField
-              floatingLabelText="Сортировать по:"
-              value={this.state.value4}
-              onChange={this.handleChange}
-              style={{ width: 220 }}
-            >
-              <MenuItem value={1} primaryText="Рейтингу" />
-              <MenuItem value={2} primaryText="Новизне" />
-              <MenuItem value={3} primaryText="Кол-ву комментариев" />
-            </SelectField>
-
-            <SelectField
-              floatingLabelText="Дата создания"
-              value={this.state.value5}
-              onChange={this.handleChange}
-              style={{ width: 220 }}
-            >
-              <MenuItem value={1} primaryText="2014" />
-              <MenuItem value={2} primaryText="2015" />
-              <MenuItem value={3} primaryText="2016" />
-              <MenuItem value={3} primaryText="2017" />
-            </SelectField>
+            {
+              filters.map((el, i) =>
+                <Filter
+                  activeFilters={ activeFilters }
+                  name={ el.name }
+                  value={ el.value }
+                  handleChange={ this.handleChange }
+                  valueFilters={ el.valueFilters }
+                  key={ i }
+                />
+              )
+            }
 
             <div className={ styles.button }>
               <RaisedButton label="Создать проект" primary={true} fullWidth={true}  />
@@ -157,8 +123,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getProjects: () => {
-      dispatch({ type: FETCH_PROJECTS_START })
+    getProjects: value => {
+      dispatch(startGetProjects(value))
+    },
+    getFilters: value => {
+      dispatch(startGetFilter(value))
+    },
+    updateFilters: value => {
+      dispatch(startStartUdpateFilter(value))
     }
   }
 };

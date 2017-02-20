@@ -3,7 +3,8 @@ const RoutesMap = {
   myPage: '/',
   projects: '/projects',
   chatHomework: '/chat',
-  performance: '/performance'
+  performance: '/performance',
+  profile: '/profile'
 };
 
 export default RoutesMap;

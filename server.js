@@ -5,21 +5,27 @@ let app = express();
 app.use(parser.json());
 
 app.post('/api/get/profile', (req, res) => {
-  const data = {
+  console.log(req.body, req.params, req.query);
 
+  const data = {
     info: {
-      myPage: true,
-      name: 'Егор Утробин', // полное имя студента
-      standing: 'Cтудент',  // категория пользователя
-      group: [
-        {
-          value: 'АПО-31',
-          link: '/#'
-        }, {
-          value: 'BALinux-11',
-          link: '/#'
-        }
-      ],
+      myPage: req.body.value === "" ? true : false,
+      name: req.body.value === "" ? 'Егор Утробин' : 'Дмитрий Смаль', // полное имя студента
+      standing: req.body.value === "" ? 'Студент' : 'Преподаватель',  // категория пользователя
+      group: req.body.value === "" ? [
+          {
+            value: 'АПО-31',
+            link: '/#'
+          }, {
+            value: 'BALinux-11',
+            link: '/#'
+          }
+        ] : [
+          {
+            value: 'Web-технологии (1 семестр)',
+            link: '/#'
+          }
+        ],
       status: 'online',
       power: 8.32,
       rating: 7.24,
@@ -27,15 +33,15 @@ app.post('/api/get/profile', (req, res) => {
         {
           value: 'facebook',
           href: '/#',
-          img: 'static/img/facebook.svg'
+          img: '/static/img/facebook.svg'
         }, {
           value: 'github',
           href: '/#',
-          img: 'static/img/github.svg'
+          img: '/static/img/github.svg'
         }, {
           value: 'vk',
           href: '/#',
-          img: 'static/img/vk.svg'
+          img: '/static/img/vk.svg'
         }
       ],
       born: '21 февраля 1997г.',
@@ -144,14 +150,14 @@ app.post('/api/get/profile', (req, res) => {
         }
       ],
     },
-    avatar: 'static/img/avatar.jpg',
+    avatar: req.body.value === "" ? '/static/img/avatar.jpg' : '/static/img/smal.jpg',
     achievements: [
-      'static/img/ach5.png',
-      'static/img/ach1.png',
-      'static/img/ach2.png',
-      'static/img/ach3.png',
-      'static/img/ach4.png',
-      'static/img/ach5.png',
+      '/static/img/ach5.png',
+      '/static/img/ach1.png',
+      '/static/img/ach2.png',
+      '/static/img/ach3.png',
+      '/static/img/ach4.png',
+      '/static/img/ach5.png',
     ]
   };
 
@@ -161,28 +167,34 @@ app.post('/api/get/profile', (req, res) => {
 app.post('/api/get/friends', (req, res) => {
   const data = [
     {
-      img: 'static/img/1.jpg',
+      img: '/static/img/1.jpg',
       id: '0',
-      name: 'Денис'
+      name: 'Денис',
+      login: 'login',
     }, {
-      img: 'static/img/2.jpg',
+      img: '/static/img/2.jpg',
       id: '1',
+      login: 'login',
       name: 'Илья'
     }, {
-      img: 'static/img/3.jpg',
+      img: '/static/img/3.jpg',
       id: '2',
+      login: 'login',
       name: 'Сергей'
     }, {
-      img: 'static/img/1.jpg',
+      img: '/static/img/1.jpg',
       id: '0',
+      login: 'login',
       name: 'Денис'
     }, {
-      img: 'static/img/2.jpg',
+      img: '/static/img/2.jpg',
       id: '1',
+      login: 'login',
       name: 'Илья'
     }, {
-      img: 'static/img/3.jpg',
+      img: '/static/img/3.jpg',
       id: '2',
+      login: 'login',
       name: 'Сергей'
     }
   ];
@@ -190,10 +202,139 @@ app.post('/api/get/friends', (req, res) => {
   res.send(data);
 });
 
-app.post('/api/get/projects', (req, res) => {
+app.post('/api/get/filter/projects', (req, res) => {
   const data = [
     {
-      img: 'static/img/project.png',
+      value: 'educationalProject',
+      name: 'Образовательный проект',
+      default: 'all',
+      valueFilters: [
+        {
+          value: 'all',
+          name: 'Все'
+        }, {
+          value: 'Technopark',
+          name: 'Технопарк'
+        }, {
+          value: 'Technosphere',
+          name: 'Техносфера'
+        }, {
+          value: 'Technotrack',
+          name: 'Технотрэк'
+        }, {
+          value: 'Technoatom',
+          name: 'Техноатом'
+        }, {
+          value: 'Technopolis',
+          name: 'Технополис'
+        }
+      ]
+    }, {
+      value: 'discipline',
+      name: 'Курс или предмет',
+      default: 'all',
+      valueFilters: [
+        {
+          value: "all",
+          name: 'Все'
+        }, {
+          value: "web-technology",
+          name: 'Web-технологии'
+        }, {
+          value: "AASD",
+          name: 'АИСД'
+        }, {
+          value: "C/C++",
+          name: 'Углуб. програм. на C/C++'
+        }, {
+          value: "Java",
+          name: 'Углуб. програм. на Java'
+        }, {
+          value: "Frontend",
+          name: 'Фронтенд разработка'
+        }, {
+          value: "UX/UI",
+          name: 'Проектирование интерфейсов'
+        }, {
+          value: "mobile-development",
+          name: 'Мобильная разработка'
+        }, {
+          value: "senior-project",
+          name: 'Выпускной проект'
+        }, {
+          value: "Linux",
+          name: 'Linux'
+        }, {
+          value: "IOS",
+          name: 'Разработка приложений на iOS'
+        }
+      ]
+    }, {
+      value: 'status',
+      name: 'Статус',
+      default: 'notSelected',
+      valueFilters: [
+        {
+          value: 'notSelected',
+          name: 'Не выбран'
+        }, {
+          value: 'development',
+          name: 'В разработке'
+        }, {
+          value: 'completed',
+          name: 'Завершенн'
+        }, {
+          value: 'search',
+          name: 'В поиске команды'
+        }
+      ]
+    }, {
+      value: 'sort',
+      name: 'Сортировать по:',
+      default: 'rating',
+      valueFilters: [
+        {
+          value: 'rating',
+          name: 'Рейтингу'
+        }, {
+          value: 'date',
+          name: 'Новизне'
+        }, {
+          value: 'comments',
+          name: 'Кол-ву комментариев'
+        }
+      ]
+    }, {
+      value: 'date',
+      name: 'Дата создания',
+      default: 'all',
+      valueFilters: [
+        {
+          value: 'all',
+          name: 'Все года'
+        }, {
+          value: '2015',
+          name: '2015'
+        }, {
+          value: '2016',
+          name: '2016'
+        }, {
+          value: '2017',
+          name: '2017'
+        },
+      ]
+    }
+  ];
+
+  res.send(data);
+});
+
+app.post('/api/get/projects', (req, res) => {
+  console.log(req.body, req.params, req.query);
+
+  const data = [
+    {
+      img: '/static/img/project.png',
       github: null,
       title: 'Technoshooter (3D игра шутер)',
       descreption: {
@@ -232,26 +373,30 @@ app.post('/api/get/projects', (req, res) => {
       comments: 7,
       team: [
         {
-          img: 'static/img/1.jpg',
+          img: '/static/img/1.jpg',
           id: '0',
+          login: 'login',
           name: 'Денис',
         }, {
-          img: 'static/img/2.jpg',
+          img: '/static/img/2.jpg',
           id: '1',
+          login: 'login',
           name: 'Илья',
           mentor: true
         }, {
-          img: 'static/img/3.jpg',
+          img: '/static/img/3.jpg',
           id: '2',
+          login: 'login',
           name: 'Сергей'
         }, {
-          img: 'static/img/1.jpg',
+          img: '/static/img/1.jpg',
           id: '0',
+          login: 'login',
           name: 'Денис'
         }
       ]
     }, {
-      img: 'static/img/project.png',
+      img: '/static/img/project.png',
       github: '#',
       title: 'Technoshooter (3D игра шутер)',
       descreption: {
@@ -290,21 +435,25 @@ app.post('/api/get/projects', (req, res) => {
       comments: 7,
       team: [
         {
-          img: 'static/img/1.jpg',
+          img: '/static/img/1.jpg',
           id: '0',
           name: 'Денис',
+          login: 'login',
         }, {
-          img: 'static/img/2.jpg',
+          img: '/static/img/2.jpg',
           id: '1',
           name: 'Илья',
+          login: 'login',
           mentor: true
         }, {
-          img: 'static/img/3.jpg',
+          img: '/static/img/3.jpg',
           id: '2',
+          login: 'login',
           name: 'Сергей'
         }, {
-          img: 'static/img/1.jpg',
+          img: '/static/img/1.jpg',
           id: '0',
+          login: 'login',
           name: 'Денис'
         }
       ]
@@ -317,7 +466,8 @@ app.post('/api/get/projects', (req, res) => {
 app.post('/api/auth', (req, res) => {
   const data = {
     id: 3,
-    img: 'static/img/avatar.jpg',
+    img: '/static/img/avatar.jpg',
+    login: 'e.utrobin'
   };
 
   res.send(data);
@@ -333,6 +483,16 @@ app.post('/api/add/skill', (req, res) => {
   res.send({ ok: 'ok' });
 });
 
+app.post('/api/add/voice', (req, res) => {
+  console.log(req.body, req.params, req.query);
+  res.send({ ok: 'ok' });
+});
+
+app.post('/api/delete/voice', (req, res) => {
+  console.log(req.body, req.params, req.query);
+  res.send({ ok: 'ok' });
+});
+
 app.post('/api/get/skills', (req, res) => {
   const data = {
     data: [
@@ -340,63 +500,71 @@ app.post('/api/get/skills', (req, res) => {
         value: 'JavaScript',
         count: 5,
         id: 0,
+        author: 'login',
+        vote: true,
         peoples: [
           {
-            img: 'static/img/1.jpg',
-            id: '0',
+            img: '/static/img/1.jpg',
+            login: 'login',
           }, {
-            img: 'static/img/2.jpg',
-            id: '1',
+            img: '/static/img/2.jpg',
+            login: 'login',
           }, {
-            img: 'static/img/3.jpg',
-            id: '2',
+            img: '/static/img/3.jpg',
+            login: 'login',
           }, {
-            img: 'static/img/1.jpg',
-            id: '3',
+            img: '/static/img/1.jpg',
+            login: 'login',
           }, {
-            img: 'static/img/2.jpg',
-            id: '4',
+            img: '/static/img/2.jpg',
+            login: 'login',
           }
         ]
       }, {
         value: 'Linux',
         count: 3,
         id: 1,
+        author: 'e.utrobin',
+        vote: false,
         peoples: [
           {
-            img: 'static/img/1.jpg',
-            id: '0',
+            img: '/static/img/1.jpg',
+            login: 'e.utrobin',
           }, {
-            img: 'static/img/2.jpg',
-            id: '1',
+            img: '/static/img/2.jpg',
+            login: 'login',
           }, {
-            img: 'static/img/3.jpg',
-            id: '2',
+            img: '/static/img/3.jpg',
+            login: 'login',
           }
         ]
       }, {
         value: 'C/C++',
         count: 4,
         id: 2,
+        vote: true,
+        author: 'login',
         peoples: [
           {
-            img: 'static/img/1.jpg',
-            id: '0',
+            img: '/static/img/1.jpg',
+            login: 'login',
           }, {
-            img: 'static/img/2.jpg',
-            id: '1',
+            img: '/static/img/2.jpg',
+            login: 'login',
           }, {
-            img: 'static/img/3.jpg',
-            id: '2',
+            img: '/static/img/3.jpg',
+            login: 'login',
           }, {
-            img: 'static/img/1.jpg',
-            id: '3',
+            img: '/static/img/1.jpg',
+            login: 'login',
           }
         ]
       }, {
         value: 'Новый навык',
         count: 0,
         id: 3,
+        author: 'login',
+        vote: true,
         peoples: []
       }
     ],

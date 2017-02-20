@@ -1,17 +1,18 @@
-.skills {
-    display: block;
-    padding: 15px;
+.skill {
     margin-top: 15px;
-    margin-bottom: 15px;
 }
-.span {
-    font-size: 16px;
-    line-height: 16px;
-    margin-bottom: 15px;
+.skill:after {
+    clear: both;
+    content: '';
     display: block;
 }
-.a {
-    font-size: 16px;
+.chip {
+    float: left;
+    margin-right: 6px!important;
+}
+.chipWrapper {
+    display: flex;
+    align-items: center;
 }
 .i {
     background-color: var(--primaryColor);
@@ -29,18 +30,8 @@
 .divider {
     padding-top: 16px;
 }
-.avatar:first-child {
-    margin-left: 6px;
-}
-.button {
-    float: right;
-    margin-top: 30px;
-    width: 260px;
-}
-.loading {
-    text-align: center;
-}
 .icon {
-    margin-left: 5px;
-    margin-right: -6px;
+    margin-right: -8px!important;
+    margin-left: 3px;
+    cursor: pointer;
 }

@@ -6,6 +6,8 @@ import Comment from 'material-ui/svg-icons/communication/comment';
 import Plus from 'material-ui/svg-icons/image/exposure-plus-1';
 import Visibility from 'material-ui/svg-icons/action/visibility';
 import { colors } from '../../total/global/globalCSS';
+import RoutesMap from '../../RoutesMap/RoutesMap';
+import { Link } from 'react-router'
 
 import styles from './Projects.css';
 
@@ -22,7 +24,9 @@ const Team = ({ peoples }) => (
   <div className={ styles.people }>
     {
       peoples.map((el, i) =>
-        <Avatar size={30} src={ el.img } key={ i } />
+        <Link to={ `${RoutesMap.profile}/${el.login}` } key={ i }>
+          <Avatar size={30} src={ el.img } />
+        </Link>
       )
     }
   </div>
@@ -53,7 +57,7 @@ const Projects = ({ data }) => (
           {
             el.github === null ? '' :
             <a href={ el.github }><Avatar size={30} className={ styles.github } style={{backgroundColor: '#fff'}}
-                                          src='static/img/github.svg' icon={<Comment />}/></a>
+                                          src='/static/img/github.svg' icon={<Comment />}/></a>
           }
 
           <div className={ styles.content }>

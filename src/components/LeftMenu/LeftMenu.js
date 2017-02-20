@@ -34,7 +34,7 @@ const LeftMenu = ({ changePage }) => (
                 onTouchTap={ () => browserHistory.push(RoutesMap.projects) }
       />
       <ListItem style={ st } primaryText="Друзья" leftIcon={<People color={ colors.icon } />}
-
+                onTouchTap={ () => browserHistory.push(`${RoutesMap.profile}/gffgf`) }
       />
       <ListItem style={ st } primaryText="Сообщения" leftIcon={<Chat color={ colors.icon } />} />
       <ListItem style={ st } primaryText="Расписание" leftIcon={<Schedule color={ colors.icon } />} />

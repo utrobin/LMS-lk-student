@@ -14,7 +14,7 @@ const Info = ({ info }) => (
         <span className={ styles.rating }>Рейтинг: { info.rating }</span>
       </div>
       <h3 className={ styles.group }>{ info.standing }</h3>
-      <h3 className={ styles.group }>Группы:&nbsp;
+      <h3 className={ styles.group }>{ info.standing !== 'Преподаватель' ? `Группы: ` : '' }
         {
           info.group.map((el, i) =>
             <span key={ i }><a className={ styles.a } href={ el.link }>{ el.value }</a>{ info.group.length === i + 1 ? '' : ','} </span>

@@ -6,7 +6,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import store from './modules/index/index';
 
 import TemplateWithLeftMenu from './templates/TemplateWithLeftMenu';
-import MyPage from './Pages/MyPage/MyPage';
+import Profile from './Pages/Profile/Profile';
 import Homeworks from './Pages/Homework/Homework';
 import ChatHomework from './Pages/ChatHomework/ChatHomework';
 import Performance from './Pages/Performance/Performance';
@@ -21,7 +21,8 @@ const App = () => (
     <MuiThemeProvider>
       <Router history={ browserHistory }>
         <Route component={ TemplateWithLeftMenu }>
-          <Route path={ RoutesMap.myPage } component={ MyPage } />
+          <Route path={ RoutesMap.myPage } component={ Profile } />
+          <Route path={ `${RoutesMap.profile}/:userName` } component={ Profile }/>
           <Route path={ RoutesMap.homework } component={ Homeworks } />
           <Route path={ RoutesMap.projects } component={ Projects } />
           <Route path={ RoutesMap.chatHomework } component={ ChatHomework } />

@@ -7,21 +7,32 @@ import Skills from '../../components/Skills/Skills';
 import Education from '../../components/Education/Education';
 import Projects from '../../components/Projects/Projects';
 import CircularProgress from 'material-ui/CircularProgress';
-import { FETCH_PROFILE_START } from '../../modules/profile/profile.constants';
-import { FETCH_FRIENDS_START } from '../../modules/friends/friends.constants';
-import { FETCH_PROJECTS_START } from '../../modules/projects/projects.constants';
+import { startGetProfile } from '../../modules/profile/profile.actions';
+import { startGetFriends } from '../../modules/friends/friends.actions';
+import { startGetProjects } from '../../modules/projects/projects.actions';
 import { connect } from 'react-redux';
-import { toastr } from 'react-redux-toastr'
-import ReduxToastr from 'react-redux-toastr'
+import RoutesMap from '../../RoutesMap/RoutesMap';
 
-import styles from './MyPage.css';
+import styles from './Profile.css';
 
-class MyPage extends React.Component {
+class Profile extends React.Component {
 
   componentDidMount () {
-    this.props.getProfile();
-    this.props.getFriends();
-    this.props.getProjects();
+    const login = this.props.location.pathname.slice(RoutesMap.profile.length + 1);
+
+    this.props.getProfile(login);
+    this.props.getFriends(login);
+    this.props.getProjects({ author: login });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.location.pathname !== nextProps.location.pathname) {
+      const login = nextProps.location.pathname.slice(RoutesMap.profile.length + 1);
+
+      this.props.getProfile(login);
+      this.props.getFriends(login);
+      this.props.getProjects({ author: login });
+    }
   }
 
   render() {
@@ -54,6 +65,7 @@ class MyPage extends React.Component {
           />
           <Skills
             myPage={ profile.info.myPage }
+            location={ this.props.location }
           />
           <h3 className={ styles.h3 }>Проекты</h3>
           <Projects
@@ -87,16 +99,16 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getProfile: () => {
-      dispatch({ type: FETCH_PROFILE_START })
+    getProfile: value => {
+      dispatch(startGetProfile(value))
     },
-    getFriends: () => {
-      dispatch({ type: FETCH_FRIENDS_START })
+    getFriends: value => {
+      dispatch(startGetFriends(value))
     },
-    getProjects: () => {
-      dispatch({ type: FETCH_PROJECTS_START })
+    getProjects: value => {
+      dispatch(startGetProjects(value))
     }
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyPage)
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)
