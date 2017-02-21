@@ -7,7 +7,7 @@ function* fetchHomework() {
   const filter = yield select(state => state.homework.filter);
   yield put(loading(true));
   const { responce, data } = yield call(callApi, {
-    url: '/api/get/homework',
+    url: '/api/homework/get',
     body: filter
   });
   if (responce) {
@@ -23,7 +23,7 @@ function* fetchFilter(filters) {
 
 
   const { responce, data } = yield call(callApi, {
-    url: '/api/get/homework',
+    url: '/api/homework/get',
     body: filter
   });
   if (responce) {

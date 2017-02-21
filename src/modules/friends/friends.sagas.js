@@ -4,7 +4,7 @@ import { callApi } from '../../service/service';
 
 export function* fetchFriends() {
   yield put(loading(true));
-  const { responce, data } = yield call(callApi, { url: '/api/get/friends' });
+  const { responce, data } = yield call(callApi, { url: '/api/friends/get' });
   if (responce) {
     yield put(getFriends(data));
     yield put(loading(false));

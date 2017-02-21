@@ -1,7 +1,7 @@
 import { FETCH_PROJECTS_SUCCESS, FETCH_PROJECTS_LOADING, FETCH_PROJECTS_START,
   FILTER_PROJECTS_UPDATE_REPLACE, FILTER_PROJECTS_GET_LOADING, FILTER_PROJECTS_GET_START,
   FILTER_PROJECTS_GET_SUCCESS, FILTER_PROJECTS_UPDATE_INIT, FILTER_PROJECTS_UPDATE_LOADING,
-  FILTER_PROJECTS_UPDATE_START } from './projects.constants';
+  FILTER_PROJECTS_UPDATE_START, FILTER_PROJECTS_RESET } from './projects.constants';
 
 export const getProjects = value => {
   return {
@@ -20,6 +20,13 @@ export const startGetProjects = value => {
 export const updateFilterReplace = value => {
   return {
     type: FILTER_PROJECTS_UPDATE_REPLACE,
+    value
+  };
+};
+
+export const updateFilterReset = value => {
+  return {
+    type: FILTER_PROJECTS_RESET,
     value
   };
 };
@@ -59,7 +66,7 @@ export const startSaveFilters = value => {
   };
 };
 
-export const startStartUdpateFilter = value => {
+export const startUpdateFilter = value => {
   return {
     type: FILTER_PROJECTS_UPDATE_START,
     value

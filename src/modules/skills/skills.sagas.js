@@ -4,11 +4,11 @@ import { getSkills, loading, deleteSkillStart, addSkillStart,
 import { DELETE_SKILLS_FETCH, FETCH_SKILLS_START, ADD_SKILL_FETCH,
   ADD_VOICE_FETCH, DELETE_VOICE_FETCH } from '../skills/skills.constants';
 import { callApi } from '../../service/service';
-import { toastr } from 'react-redux-toastr'
+import { toastr } from 'react-redux-toastr';
 
 function* fetchSkills() {
   yield put(loading(true));
-  const { responce, data } = yield call(callApi, { url: '/api/get/skills' });
+  const { responce, data } = yield call(callApi, { url: '/api/skills/get' });
   if (responce) {
     yield put(getSkills(data));
     yield put(loading(false));
@@ -20,7 +20,7 @@ function* deleteSkill({ value }) {
 
   const { responce, data } = yield call(callApi,
     {
-      url: '/api/delete/skill',
+      url: '/api/skill/delete',
       method: 'post',
       body: { value }
     });
@@ -36,7 +36,7 @@ function* addSkill({ value }) {
 
   const { responce, data } = yield call(callApi,
     {
-      url: '/api/add/skill',
+      url: '/api/skill/add',
       body: { skill: value.skill }
     });
 
@@ -55,7 +55,7 @@ function* addVoice({ value: data }) {
 
   const { responce } = yield call(callApi,
     {
-      url: '/api/add/voice',
+      url: '/api/skill/voice/add',
       body: { skill: value, who }
     });
 
@@ -74,7 +74,7 @@ function* deleteVoice({ value: data }) {
 
   const { responce } = yield call(callApi,
     {
-      url: '/api/delete/voice',
+      url: '/api/skill/voice/delete',
       body: { skill: value, who }
     });
 
@@ -85,14 +85,14 @@ function* deleteVoice({ value: data }) {
 }
 
 //TODO
-function* fetchDictionary() {
-  yield put(loading(true));
-  const { responce, data } = yield call(callApi, '/api/get/dictionaryskills');
-  if (responce) {
-    yield put(getSkills(data));
-    yield put(loading(false));
-  }
-}
+// function* fetchDictionary() {
+//   yield put(loading(true));
+//   const { responce, data } = yield call(callApi, '/api/get/dictionaryskills');
+//   if (responce) {
+//     yield put(getSkills(data));
+//     yield put(loading(false));
+//   }
+// }
 
 export default function* rootSagaSkills() {
   yield takeEvery(FETCH_SKILLS_START, fetchSkills);

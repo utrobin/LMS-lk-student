@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { FETCH_PROJECTS_SUCCESS, FETCH_PROJECTS_LOADING, FILTER_PROJECTS_UPDATE_REPLACE,
   FILTER_PROJECTS_GET_LOADING, FILTER_PROJECTS_GET_SUCCESS, FILTER_PROJECTS_UPDATE_INIT,
-  FILTER_PROJECTS_UPDATE_LOADING } from './projects.constants';
+  FILTER_PROJECTS_UPDATE_LOADING, FILTER_PROJECTS_RESET } from './projects.constants';
 
 const data = (state = {}, action) => {
   switch (action.type) {
@@ -58,10 +58,12 @@ const activeFilters = (state = initFilter, action) => {
       let newState = {};
 
       action.value.forEach(el => {
-        newState[el.value] = el.default
+        newState[el.key] = el.default
       });
 
       return newState;
+    case FILTER_PROJECTS_RESET:
+      return action.value;
     case FILTER_PROJECTS_UPDATE_REPLACE:
       return Object.assign({}, state, action.value);
     default:

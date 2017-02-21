@@ -21,40 +21,13 @@ class Skills extends React.Component {
 
     this.state = {
       open: false,
-      value: undefined
+      value: undefined,
+      formSkill: ''
     };
   }
 
-  getFormData() {
-    const elements = this.form.elements;
-    const fields = {};
-
-    Object.keys(elements).forEach(element => {
-      const name = elements[element].name;
-      const value = elements[element].value;
-
-      if (!name) {
-        return;
-      }
-
-      fields[name] = value;
-    });
-
-    return fields;
-  }
-
-  clearFormData() {
-    const elements = this.form.elements;
-
-    Object.keys(elements).forEach(element => {
-      const name = elements[element].name;
-
-      if (!name) {
-        return;
-      }
-
-     elements[element].value = '';
-    });
+  componentDidMount () {
+    this.props.getSkills();
   }
 
   handleOpen = value => {
@@ -73,10 +46,6 @@ class Skills extends React.Component {
     this.handleClose();
   };
 
-  componentDidMount () {
-    this.props.getSkills();
-  }
-
   addVoice = value => {
     const login = this.props.location.pathname.slice(RoutesMap.profile.length + 1);
 
@@ -92,7 +61,7 @@ class Skills extends React.Component {
   formSubmit = e => {
     e.preventDefault();
 
-    const formData = this.getFormData();
+    const formData = { skill: this.state.formSkill };
 
     const replays = this.props.skills.data.value.data.every(el => {
       return el.value !== formData.skill
@@ -103,6 +72,9 @@ class Skills extends React.Component {
     }
 
     if (replays) {
+      this.setState({ formSkill: '' });
+      console.log(this.state.formSkill);
+
       if(this.props.myPage) {
         const temp = Object.assign({}, formData, { author: this.props.auth.data.value.login });
         this.props.addSkill(temp);
@@ -120,7 +92,7 @@ class Skills extends React.Component {
   };
 
   updateInput(event) {
-    console.log(event)
+    this.setState({ formSkill: event });
   }
 
   render() {
@@ -175,13 +147,14 @@ class Skills extends React.Component {
             )
           }
         </div>
-        <form onSubmit={ (e) => { e.preventDefault() } }  ref={ form => this.form = form }>
+        <form onSubmit={ this.formSubmit  }  ref={ form => this.form = form }>
           <AutoComplete
             floatingLabelText="Навык"
             filter={ AutoComplete.noFilter }
             openOnFocus={ true }
             dataSource={ data.dictionarySkills }
             onUpdateInput={ (e) => this.updateInput(e) }
+            searchText={ this.state.formSkill }
             name="skill"
           />
           <div className={ styles.button } >
@@ -208,11 +181,10 @@ class Skills extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps, gf) => {
+const mapStateToProps = state => {
   return {
     skills: state.skills,
     auth: state.auth,
-    router: ownProps
   }
 };
 

@@ -50,7 +50,6 @@ class Homeworks extends React.Component {
 
     return (
       <div className={ styles.homeworks }>
-        { console.log(data) }
         <div className={ styles.wrapperRadio }>
           <RadioButtonGroup name="shipSpeed" defaultSelected="uncompleted" onChange={ this.updateFilterStatus } className={ styles.radio }>
             <RadioButton

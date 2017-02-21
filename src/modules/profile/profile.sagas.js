@@ -4,10 +4,12 @@ import { callApi } from '../../service/service';
 
 export function* fetchUser({ value }) {
   yield put(loading(true));
+
   const { responce, data } = yield call(callApi, {
-    url: '/api/get/profile',
+    url: '/api/profile/get',
     body: { value }
   });
+
   if (responce) {
     yield put(getProfile(data));
     yield put(loading(false));

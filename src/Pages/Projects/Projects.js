@@ -6,7 +6,7 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import AutoComplete from 'material-ui/AutoComplete';
 import CircularProgress from 'material-ui/CircularProgress';
-import { startGetProjects, startGetFilter, startStartUdpateFilter } from '../../modules/projects/projects.actions';
+import { startGetProjects, startGetFilter, startUpdateFilter } from '../../modules/projects/projects.actions';
 import { connect } from 'react-redux';
 
 import styles from './Projects.css';
@@ -17,18 +17,18 @@ const dataSource = [
   'Клевый проект'
 ];
 
-const Filter = ({ name, value, activeFilters, handleChange, valueFilters }) => (
+const Filter = ({ name, keyn, activeFilters, handleChange, valueFilters }) => (
   <SelectField
     floatingLabelText={ name }
-    value={ activeFilters[value] }
-    onChange={ (event, index, v) => handleChange(value, v) }
+    value={ activeFilters[keyn] }
+    onChange={ (event, value, payload) => handleChange(keyn, payload) }
     maxHeight={300}
     style={{ width: 220 }}
   >
     {
       valueFilters.map((el, i) =>
         <MenuItem
-          value={ el.value }
+          value={ el.id }
           primaryText={ el.name }
           key={ i }
         />
@@ -40,12 +40,11 @@ const Filter = ({ name, value, activeFilters, handleChange, valueFilters }) => (
 class Projects extends React.Component {
 
   componentDidMount () {
-    this.props.getProjects();
+    this.props.getProjects({ filters: 'default' });
     this.props.getFilters();
   }
 
   handleChange = (name, value) => {
-
     this.props.updateFilters({ [name]: value });
   };
 
@@ -97,7 +96,7 @@ class Projects extends React.Component {
                 <Filter
                   activeFilters={ activeFilters }
                   name={ el.name }
-                  value={ el.value }
+                  keyn={ el.key }
                   handleChange={ this.handleChange }
                   valueFilters={ el.valueFilters }
                   key={ i }
@@ -130,7 +129,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(startGetFilter(value))
     },
     updateFilters: value => {
-      dispatch(startStartUdpateFilter(value))
+      dispatch(startUpdateFilter(value))
     }
   }
 };
