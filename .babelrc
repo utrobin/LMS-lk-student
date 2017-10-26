@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    ["transform-runtime"],
+    ["transform-regenerator"],
+    ["transform-class-properties"]
+  ],
+
+  "presets": [
+    "react",
+    "es2015",
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "ie 10", "safari >= 7"]
+      }
+    }]
+  ]
+}

@@ -10,7 +10,7 @@ module.exports = {
   devtool: '#cheap-module-source-map',
 
   output: {
-    path: "./src/built",
+	  path: path.join(__dirname, 'src/built'),
     filename: "[name].js",
     publicPath: '/static/'
   },
@@ -21,34 +21,21 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        query: {
-          presets: ['es2015', 'react', 'stage-2'],
-          plugins: [
-            ["transform-runtime"],
-            ["transform-regenerator"]
-          ],
-        }
-      }, {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
-      }, {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
-        )
-      },
-      { test: /\.svg$/, loader: "url-loader?limit=10000&mimetype=image/svg+xml" },
+      },{
+		    test: /\.scss$/,
+		    loader: ExtractTextPlugin.extract({
+			    fallback: "style-loader",
+			    use: [
+				    "css-loader?modules&importLoaders=1&localIdentName=[hash:base64:7]",
+				    'postcss-loader',
+				    'sass-loader'
+			    ]
+		    }),
+	    }, {
+		    test: /\.css$/,
+		    loader: ExtractTextPlugin.extract('css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader')
+	    }, { test: /\.svg$/, loader: "url-loader?limit=10000&mimetype=image/svg+xml" },
     ]
-  },
-
-  postcss: [
-    require('autoprefixer-core'),
-    require('postcss-color-rebeccapurple')
-  ],
-
-  resolve: {
-    modulesDirectories: ['node_modules', 'components'],
   },
 
   plugins: [
